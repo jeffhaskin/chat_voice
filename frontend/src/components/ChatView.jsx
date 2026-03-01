@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import MessageList from './MessageList'
 import InputBar from './InputBar'
+import GearIcon from '../icons/GearIcon'
 
 const styles = {
   container: {
@@ -99,7 +100,7 @@ export default function ChatView({
           {dark ? '\u2600' : '\u263D'}
         </button>
         <button style={styles.topBtn} onClick={onOpenSettings} aria-label="Settings">
-          &#9881;
+          <GearIcon size={20} />
         </button>
       </div>
       <div style={styles.messagesArea}>

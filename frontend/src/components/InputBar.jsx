@@ -1,4 +1,6 @@
 import { useState, useRef, useCallback } from 'react'
+import SoundwaveIcon from '../icons/SoundwaveIcon'
+import SendIcon from '../icons/SendIcon'
 
 const styles = {
   container: {
@@ -87,7 +89,7 @@ export default function InputBar({ onSend, disabled, onVoiceToggle }) {
         onClick={onVoiceToggle}
         aria-label="Voice mode"
       >
-        &#127908;
+        <SoundwaveIcon size={20} />
       </button>
       <button
         style={{
@@ -99,7 +101,7 @@ export default function InputBar({ onSend, disabled, onVoiceToggle }) {
         disabled={!text.trim() || disabled}
         aria-label="Send"
       >
-        &#9654;
+        <SendIcon size={20} />
       </button>
     </div>
   )
