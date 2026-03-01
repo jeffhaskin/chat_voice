@@ -6,16 +6,17 @@ import wave
 
 logger = logging.getLogger(__name__)
 
-_model_path = None
+_whisper = None
 
-def init_stt(model_path: str = "/Users/jeff/mlx_models/distil-large-v3"):
-    global _model_path
-    _model_path = model_path
-    logger.info(f"STT initialized with model path: {model_path}")
+def init_stt(model: str = "distil-large-v3"):
+    global _whisper
+    from lightning_whisper_mlx import LightningWhisperMLX
+    _whisper = LightningWhisperMLX(model=model, batch_size=12, quant=None)
+    logger.info(f"STT initialized with model: {model}")
 
 def cleanup_stt():
-    global _model_path
-    _model_path = None
+    global _whisper
+    _whisper = None
     logger.info("STT cleaned up")
 
 async def transcribe_audio(audio_data: bytes) -> str:
@@ -37,9 +38,7 @@ async def transcribe_audio(audio_data: bytes) -> str:
         logger.info(f"Transcribing {len(audio_data)} bytes of audio...")
 
         def _transcribe():
-            from lightning_whisper_mlx import LightningWhisperMLX
-            whisper = LightningWhisperMLX(model=_model_path, batch_size=12, quant=None)
-            result = whisper.transcribe(tmp_path)
+            result = _whisper.transcribe(tmp_path)
             return result["text"].strip()
 
         text = await asyncio.get_event_loop().run_in_executor(None, _transcribe)

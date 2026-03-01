@@ -1,3 +1,7 @@
+import { useState, useRef, useEffect } from 'react'
+import TrashIcon from '../icons/TrashIcon'
+import PencilIcon from '../icons/PencilIcon'
+
 const styles = {
   overlay: {
     position: 'fixed',
@@ -74,10 +78,20 @@ const styles = {
     color: 'var(--text-muted)',
     marginTop: 2,
   },
-  deleteBtn: {
+  editInput: {
+    fontSize: 15,
+    fontWeight: 500,
+    width: '100%',
+    padding: '2px 4px',
+    border: '1px solid var(--border)',
+    borderRadius: 4,
+    background: 'var(--surface)',
+    color: 'inherit',
+    outline: 'none',
+  },
+  actionBtn: {
     width: 36,
     height: 36,
-    fontSize: 16,
     color: 'var(--text-muted)',
     display: 'flex',
     alignItems: 'center',
@@ -102,8 +116,38 @@ export default function ConversationListModal({
   onSelect,
   onNew,
   onDelete,
+  onRename,
   onClose,
 }) {
+  const [editingId, setEditingId] = useState(null)
+  const [editValue, setEditValue] = useState('')
+  const inputRef = useRef(null)
+
+  useEffect(() => {
+    if (editingId && inputRef.current) {
+      inputRef.current.focus()
+      inputRef.current.select()
+    }
+  }, [editingId])
+
+  const startEditing = (conv, e) => {
+    e.stopPropagation()
+    setEditingId(conv.id)
+    setEditValue(conv.title || '')
+  }
+
+  const commitEdit = () => {
+    if (editingId && editValue.trim()) {
+      onRename(editingId, editValue.trim())
+    }
+    setEditingId(null)
+  }
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') commitEdit()
+    if (e.key === 'Escape') setEditingId(null)
+  }
+
   return (
     <div style={styles.overlay} onClick={onClose}>
       <div style={styles.panel} onClick={(e) => e.stopPropagation()}>
@@ -129,18 +173,39 @@ export default function ConversationListModal({
               onClick={() => onSelect(conv.id)}
             >
               <div style={styles.itemText}>
-                <div style={styles.itemTitle}>{conv.title || 'Untitled'}</div>
-                <div style={styles.itemDate}>{formatDate(conv.updated_at || conv.created_at)}</div>
+                {editingId === conv.id ? (
+                  <input
+                    ref={inputRef}
+                    style={styles.editInput}
+                    value={editValue}
+                    onChange={(e) => setEditValue(e.target.value)}
+                    onBlur={commitEdit}
+                    onKeyDown={handleKeyDown}
+                    onClick={(e) => e.stopPropagation()}
+                  />
+                ) : (
+                  <>
+                    <div style={styles.itemTitle}>{conv.title || 'Untitled'}</div>
+                    <div style={styles.itemDate}>{formatDate(conv.updated_at || conv.created_at)}</div>
+                  </>
+                )}
               </div>
               <button
-                style={styles.deleteBtn}
+                style={styles.actionBtn}
+                onClick={(e) => startEditing(conv, e)}
+                aria-label="Rename conversation"
+              >
+                <PencilIcon size={14} />
+              </button>
+              <button
+                style={styles.actionBtn}
                 onClick={(e) => {
                   e.stopPropagation()
                   onDelete(conv.id)
                 }}
                 aria-label="Delete conversation"
               >
-                &#128465;
+                <TrashIcon size={14} />
               </button>
             </div>
           ))}

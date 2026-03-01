@@ -196,7 +196,7 @@ async def websocket_endpoint(websocket: WebSocket):
                     if not conv_id:
                         conv = await db.create_conversation()
                         conv_id = conv.id
-                        await send_json(websocket, {"type": "conversation_created", "conversation": conv.model_dump()})
+                        await send_json(websocket, {"type": "conversation_created", "conversation": conv.model_dump(mode="json")})
                     session.conversation_id = conv_id
                     await handle_text_message(session, data["content"], conv_id)
 
@@ -205,7 +205,7 @@ async def websocket_endpoint(websocket: WebSocket):
                     if not conv_id:
                         conv = await db.create_conversation()
                         conv_id = conv.id
-                        await send_json(websocket, {"type": "conversation_created", "conversation": conv.model_dump()})
+                        await send_json(websocket, {"type": "conversation_created", "conversation": conv.model_dump(mode="json")})
                     session.conversation_id = conv_id
                     await handle_audio_complete(session, conv_id)
 
@@ -243,13 +243,13 @@ class SettingUpdate(BaseModel):
 @app.get("/api/conversations")
 async def api_list_conversations():
     convs = await db.list_conversations()
-    return [c.model_dump() for c in convs]
+    return [c.model_dump(mode="json") for c in convs]
 
 
 @app.post("/api/conversations")
 async def api_create_conversation():
     conv = await db.create_conversation()
-    return conv.model_dump()
+    return conv.model_dump(mode="json")
 
 
 @app.get("/api/conversations/{conversation_id}")
@@ -257,13 +257,13 @@ async def api_get_conversation(conversation_id: str):
     conv = await db.get_conversation(conversation_id)
     if not conv:
         return JSONResponse(status_code=404, content={"error": "Not found"})
-    return conv.model_dump()
+    return conv.model_dump(mode="json")
 
 
 @app.put("/api/conversations/{conversation_id}")
 async def api_update_conversation(conversation_id: str, body: TitleUpdate):
     conv = await db.update_conversation(conversation_id, body.title)
-    return conv.model_dump()
+    return conv.model_dump(mode="json")
 
 
 @app.delete("/api/conversations/{conversation_id}")
@@ -275,7 +275,7 @@ async def api_delete_conversation(conversation_id: str):
 @app.get("/api/conversations/{conversation_id}/messages")
 async def api_list_messages(conversation_id: str):
     msgs = await db.list_messages(conversation_id)
-    return [m.model_dump() for m in msgs]
+    return [m.model_dump(mode="json") for m in msgs]
 
 
 @app.get("/api/settings/{key}")

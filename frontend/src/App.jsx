@@ -183,6 +183,19 @@ export default function App() {
     }
   }, [currentConversationId, fetchConversations])
 
+  const handleRenameConversation = useCallback(async (convId, newTitle) => {
+    try {
+      await fetch(`${API}/conversations/${convId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title: newTitle }),
+      })
+      fetchConversations()
+    } catch {
+      // ignore
+    }
+  }, [fetchConversations])
+
   const handleSwitchToVoice = useCallback(() => {
     setView('voice')
     switchMode('voice')
@@ -230,6 +243,7 @@ export default function App() {
           onSelect={handleSelectConversation}
           onNew={handleNewConversation}
           onDelete={handleDeleteConversation}
+          onRename={handleRenameConversation}
           onClose={() => setShowConversations(false)}
         />
       )}
