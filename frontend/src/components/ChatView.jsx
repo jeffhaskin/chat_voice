@@ -2,6 +2,8 @@ import { useState, useEffect, useCallback } from 'react'
 import MessageList from './MessageList'
 import InputBar from './InputBar'
 import GearIcon from '../icons/GearIcon'
+import SunIcon from '../icons/SunIcon'
+import MoonIcon from '../icons/MoonIcon'
 
 const styles = {
   container: {
@@ -97,7 +99,7 @@ export default function ChatView({
           {conversationTitle}
         </div>
         <button style={styles.topBtn} onClick={toggleTheme} aria-label="Toggle theme">
-          {dark ? '\u2600' : '\u263D'}
+          {dark ? <SunIcon size={20} /> : <MoonIcon size={20} />}
         </button>
         <button style={styles.topBtn} onClick={onOpenSettings} aria-label="Settings">
           <GearIcon size={20} />
