@@ -10,4 +10,7 @@ claude-agent-sdk
 lightning-whisper-mlx
 mlx-audio
 misaki
+num2words
+spacy
+phonemizer
 numpy

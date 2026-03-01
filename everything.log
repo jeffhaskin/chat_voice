@@ -96,3 +96,193 @@
 2026-03-01 16:11:15,505 [server.services.db] INFO: Database initialized at chat_voice.db
 2026-03-01 16:11:15,505 [server.services.stt] INFO: STT initialized with model path: /Users/jeff/mlx_models/distil-large-v3
 2026-03-01 16:11:15,954 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/mlx-community/Kokoro-82M-4bit/revision/main "HTTP/1.1 200 OK"
+2026-03-01 16:17:50,382 [server.main] INFO: Starting server — initializing services...
+2026-03-01 16:17:50,382 [server.services.db] INFO: Opening database connection to chat_voice.db
+2026-03-01 16:17:50,383 [server.services.db] INFO: Database initialized at chat_voice.db
+2026-03-01 16:17:50,383 [server.services.stt] INFO: STT initialized with model path: /Users/jeff/mlx_models/distil-large-v3
+2026-03-01 16:17:50,834 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/mlx-community/Kokoro-82M-4bit/revision/main "HTTP/1.1 200 OK"
+2026-03-01 16:20:24,733 [server.main] INFO: Starting server — initializing services...
+2026-03-01 16:20:24,734 [server.services.db] INFO: Opening database connection to chat_voice.db
+2026-03-01 16:20:24,734 [server.services.db] INFO: Database initialized at chat_voice.db
+2026-03-01 16:20:24,734 [server.services.stt] INFO: STT initialized with model path: /Users/jeff/mlx_models/distil-large-v3
+2026-03-01 16:20:25,129 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/mlx-community/Kokoro-82M-4bit/revision/main "HTTP/1.1 200 OK"
+2026-03-01 16:20:35,861 [server.main] INFO: Starting server — initializing services...
+2026-03-01 16:20:35,861 [server.services.db] INFO: Opening database connection to chat_voice.db
+2026-03-01 16:20:35,862 [server.services.db] INFO: Database initialized at chat_voice.db
+2026-03-01 16:20:35,862 [server.services.stt] INFO: STT initialized with model path: /Users/jeff/mlx_models/distil-large-v3
+2026-03-01 16:20:36,191 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/mlx-community/Kokoro-82M-4bit/revision/main "HTTP/1.1 200 OK"
+2026-03-01 16:21:03,401 [server.main] INFO: Starting server — initializing services...
+2026-03-01 16:21:03,401 [server.services.db] INFO: Opening database connection to chat_voice.db
+2026-03-01 16:21:03,402 [server.services.db] INFO: Database initialized at chat_voice.db
+2026-03-01 16:21:03,402 [server.services.stt] INFO: STT initialized with model path: /Users/jeff/mlx_models/distil-large-v3
+2026-03-01 16:21:03,884 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/mlx-community/Kokoro-82M-4bit/revision/main "HTTP/1.1 200 OK"
+2026-03-01 16:21:09,549 [server.main] INFO: Starting server — initializing services...
+2026-03-01 16:21:09,549 [server.services.db] INFO: Opening database connection to chat_voice.db
+2026-03-01 16:21:09,550 [server.services.db] INFO: Database initialized at chat_voice.db
+2026-03-01 16:21:09,550 [server.services.stt] INFO: STT initialized with model path: /Users/jeff/mlx_models/distil-large-v3
+2026-03-01 16:21:09,974 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/mlx-community/Kokoro-82M-4bit/revision/main "HTTP/1.1 200 OK"
+2026-03-01 16:22:07,317 [server.main] INFO: Starting server — initializing services...
+2026-03-01 16:22:07,317 [server.services.db] INFO: Opening database connection to chat_voice.db
+2026-03-01 16:22:07,318 [server.services.db] INFO: Database initialized at chat_voice.db
+2026-03-01 16:22:07,318 [server.services.stt] INFO: STT initialized with model path: /Users/jeff/mlx_models/distil-large-v3
+2026-03-01 16:22:07,788 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/mlx-community/Kokoro-82M-4bit/revision/main "HTTP/1.1 200 OK"
+2026-03-01 16:22:51,959 [server.main] INFO: Starting server — initializing services...
+2026-03-01 16:22:51,959 [server.services.db] INFO: Opening database connection to chat_voice.db
+2026-03-01 16:22:51,960 [server.services.db] INFO: Database initialized at chat_voice.db
+2026-03-01 16:22:51,960 [server.services.stt] INFO: STT initialized with model path: /Users/jeff/mlx_models/distil-large-v3
+2026-03-01 16:22:52,369 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/mlx-community/Kokoro-82M-4bit/revision/main "HTTP/1.1 200 OK"
+2026-03-01 16:23:56,326 [server.main] INFO: Starting server — initializing services...
+2026-03-01 16:23:56,326 [server.services.db] INFO: Opening database connection to chat_voice.db
+2026-03-01 16:23:56,327 [server.services.db] INFO: Database initialized at chat_voice.db
+2026-03-01 16:23:56,327 [server.services.stt] INFO: STT initialized with model path: /Users/jeff/mlx_models/distil-large-v3
+2026-03-01 16:23:56,698 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/prince-canuma/Kokoro-82M/revision/main "HTTP/1.1 200 OK"
+2026-03-01 16:23:57,698 [server.services.tts] INFO: TTS initialized with Kokoro MLX
+2026-03-01 16:23:57,698 [server.services.llm] INFO: LLM service initialized (claude-agent-sdk)
+2026-03-01 16:23:57,703 [server.services.search] INFO: Search service initialized
+2026-03-01 16:23:57,703 [server.main] INFO: All services initialized
+2026-03-01 16:24:04,362 [server.main] INFO: Starting server — initializing services...
+2026-03-01 16:24:04,362 [server.services.db] INFO: Opening database connection to chat_voice.db
+2026-03-01 16:24:04,362 [server.services.db] INFO: Database initialized at chat_voice.db
+2026-03-01 16:24:04,363 [server.services.stt] INFO: STT initialized with model path: /Users/jeff/mlx_models/distil-large-v3
+2026-03-01 16:24:04,744 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/prince-canuma/Kokoro-82M/revision/main "HTTP/1.1 200 OK"
+2026-03-01 16:24:05,804 [server.services.tts] INFO: TTS initialized with Kokoro MLX
+2026-03-01 16:24:05,804 [server.services.llm] INFO: LLM service initialized (claude-agent-sdk)
+2026-03-01 16:24:05,808 [server.services.search] INFO: Search service initialized
+2026-03-01 16:24:05,808 [server.main] INFO: All services initialized
+2026-03-01 16:24:07,496 [server.main] INFO: WebSocket connected: 151bebec-9a5f-4c51-b810-8e9e995cd23e
+2026-03-01 16:25:49,416 [server.main] ERROR: WebSocket error for session 151bebec-9a5f-4c51-b810-8e9e995cd23e: Cannot call "receive" once a disconnect message has been received.
+2026-03-01 16:26:09,046 [server.main] INFO: Starting server — initializing services...
+2026-03-01 16:26:09,046 [server.services.db] INFO: Opening database connection to chat_voice.db
+2026-03-01 16:26:09,046 [server.services.db] INFO: Database initialized at chat_voice.db
+2026-03-01 16:26:09,046 [server.services.stt] INFO: STT initialized with model path: /Users/jeff/mlx_models/distil-large-v3
+2026-03-01 16:26:09,501 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/prince-canuma/Kokoro-82M/revision/main "HTTP/1.1 200 OK"
+2026-03-01 16:26:10,545 [server.services.tts] INFO: TTS initialized with Kokoro MLX
+2026-03-01 16:26:10,545 [server.services.llm] INFO: LLM service initialized (claude-agent-sdk)
+2026-03-01 16:26:10,550 [server.services.search] INFO: Search service initialized
+2026-03-01 16:26:10,550 [server.main] INFO: All services initialized
+2026-03-01 16:26:24,493 [server.main] INFO: WebSocket connected: b9813e51-51db-4ccc-9149-668c7299e2c0
+2026-03-01 16:26:54,602 [server.main] INFO: WebSocket connected: f54f2d21-0682-4ce3-85fd-3e4cda19b0d6
+2026-03-01 16:26:54,616 [server.main] ERROR: WebSocket error for session f54f2d21-0682-4ce3-85fd-3e4cda19b0d6: Cannot call "receive" once a disconnect message has been received.
+2026-03-01 16:27:39,859 [server.main] ERROR: WebSocket error for session b9813e51-51db-4ccc-9149-668c7299e2c0: Cannot call "receive" once a disconnect message has been received.
+2026-03-01 16:27:39,940 [server.main] INFO: WebSocket connected: 95761f44-a6d7-4868-86cf-05e8e97080dd
+2026-03-01 16:27:39,942 [server.main] ERROR: WebSocket error for session 95761f44-a6d7-4868-86cf-05e8e97080dd: Cannot call "receive" once a disconnect message has been received.
+2026-03-01 16:27:39,946 [server.main] INFO: WebSocket connected: c84a0232-29ba-4838-bcf4-1c08257ae0c8
+2026-03-01 16:27:44,974 [server.services.db] INFO: Created conversation 63fed387-ccd3-4cbd-a663-15bb251b6d78
+2026-03-01 16:27:44,975 [server.main] ERROR: WebSocket error for session c84a0232-29ba-4838-bcf4-1c08257ae0c8: Object of type datetime is not JSON serializable
+2026-03-01 16:27:45,988 [server.main] INFO: WebSocket connected: e9cebdcc-e3bd-460e-8023-94cff17163bd
+2026-03-01 16:28:01,244 [server.main] ERROR: WebSocket error for session e9cebdcc-e3bd-460e-8023-94cff17163bd: Cannot call "receive" once a disconnect message has been received.
+2026-03-01 16:28:01,343 [server.main] INFO: Shutting down services...
+2026-03-01 16:28:01,344 [server.services.db] INFO: Database connection closed
+2026-03-01 16:28:01,344 [server.services.stt] INFO: STT cleaned up
+2026-03-01 16:28:01,344 [server.services.tts] INFO: TTS cleaned up
+2026-03-01 16:28:01,344 [server.services.llm] INFO: LLM service cleaned up
+2026-03-01 16:28:01,348 [server.services.search] INFO: Search service cleaned up
+2026-03-01 16:28:01,348 [server.main] INFO: All services cleaned up
+2026-03-01 16:28:44,036 [server.main] INFO: Starting server — initializing services...
+2026-03-01 16:28:44,036 [server.services.db] INFO: Opening database connection to chat_voice.db
+2026-03-01 16:28:44,037 [server.services.db] INFO: Database initialized at chat_voice.db
+2026-03-01 16:28:44,037 [server.services.stt] INFO: STT initialized with model path: /Users/jeff/mlx_models/distil-large-v3
+2026-03-01 16:28:44,528 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/prince-canuma/Kokoro-82M/revision/main "HTTP/1.1 200 OK"
+2026-03-01 16:28:45,611 [server.services.tts] INFO: TTS initialized with Kokoro MLX
+2026-03-01 16:28:45,611 [server.services.llm] INFO: LLM service initialized (claude-agent-sdk)
+2026-03-01 16:28:45,616 [server.services.search] INFO: Search service initialized
+2026-03-01 16:28:45,616 [server.main] INFO: All services initialized
+2026-03-01 16:28:46,400 [server.main] INFO: WebSocket connected: 1ced9afb-f4d6-4bb7-b363-b306d707c2c9
+2026-03-01 16:28:53,530 [server.main] INFO: WebSocket connected: a3d6b197-451c-45bc-9b75-d79903825188
+2026-03-01 16:28:53,540 [server.main] ERROR: WebSocket error for session a3d6b197-451c-45bc-9b75-d79903825188: Cannot call "receive" once a disconnect message has been received.
+2026-03-01 16:29:57,786 [server.main] ERROR: WebSocket error for session 1ced9afb-f4d6-4bb7-b363-b306d707c2c9: Cannot call "receive" once a disconnect message has been received.
+2026-03-01 16:29:57,887 [server.main] INFO: Shutting down services...
+2026-03-01 16:29:57,887 [server.services.db] INFO: Database connection closed
+2026-03-01 16:29:57,887 [server.services.stt] INFO: STT cleaned up
+2026-03-01 16:29:57,888 [server.services.tts] INFO: TTS cleaned up
+2026-03-01 16:29:57,888 [server.services.llm] INFO: LLM service cleaned up
+2026-03-01 16:29:57,895 [server.services.search] INFO: Search service cleaned up
+2026-03-01 16:29:57,895 [server.main] INFO: All services cleaned up
+2026-03-01 16:29:58,379 [server.main] INFO: Starting server — initializing services...
+2026-03-01 16:29:58,379 [server.services.db] INFO: Opening database connection to chat_voice.db
+2026-03-01 16:29:58,380 [server.services.db] INFO: Database initialized at chat_voice.db
+2026-03-01 16:29:58,380 [server.services.stt] INFO: STT initialized with model path: /Users/jeff/mlx_models/distil-large-v3
+2026-03-01 16:29:58,748 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/prince-canuma/Kokoro-82M/revision/main "HTTP/1.1 200 OK"
+2026-03-01 16:29:59,799 [server.services.tts] INFO: TTS initialized with Kokoro MLX
+2026-03-01 16:29:59,799 [server.services.llm] INFO: LLM service initialized (claude-agent-sdk)
+2026-03-01 16:29:59,804 [server.services.search] INFO: Search service initialized
+2026-03-01 16:29:59,804 [server.main] INFO: All services initialized
+2026-03-01 16:29:59,805 [server.main] INFO: WebSocket connected: 4fc5d6ad-1aab-4b03-af8c-368a0f08cbc8
+2026-03-01 16:31:09,620 [server.main] INFO: WebSocket connected: 16ce5cf7-8b32-4705-88c0-971fbe8bb4f7
+2026-03-01 16:31:09,632 [server.main] ERROR: WebSocket error for session 16ce5cf7-8b32-4705-88c0-971fbe8bb4f7: Cannot call "receive" once a disconnect message has been received.
+2026-03-01 16:31:11,901 [server.main] INFO: WebSocket connected: 18ada68c-5967-42cd-8175-8b6c1eb8026f
+2026-03-01 16:31:11,910 [server.main] ERROR: WebSocket error for session 18ada68c-5967-42cd-8175-8b6c1eb8026f: Cannot call "receive" once a disconnect message has been received.
+2026-03-01 16:31:16,085 [server.main] INFO: WebSocket connected: cad283b1-9976-4f29-9219-84a314b30046
+2026-03-01 16:31:16,097 [server.main] ERROR: WebSocket error for session cad283b1-9976-4f29-9219-84a314b30046: Cannot call "receive" once a disconnect message has been received.
+2026-03-01 16:31:17,489 [server.main] INFO: WebSocket connected: 71d2b64c-3671-4932-bd58-e3b3f15c7882
+2026-03-01 16:31:17,509 [server.main] ERROR: WebSocket error for session 71d2b64c-3671-4932-bd58-e3b3f15c7882: Cannot call "receive" once a disconnect message has been received.
+2026-03-01 16:31:18,780 [server.main] INFO: WebSocket connected: 5302de98-22bd-4291-8fb7-bdd0861f4456
+2026-03-01 16:31:18,791 [server.main] ERROR: WebSocket error for session 5302de98-22bd-4291-8fb7-bdd0861f4456: Cannot call "receive" once a disconnect message has been received.
+2026-03-01 16:31:20,529 [server.main] INFO: WebSocket connected: eca8bec9-8ebc-4ee9-8f78-a173e5f362e9
+2026-03-01 16:31:20,541 [server.main] ERROR: WebSocket error for session eca8bec9-8ebc-4ee9-8f78-a173e5f362e9: Cannot call "receive" once a disconnect message has been received.
+2026-03-01 16:31:42,008 [server.main] INFO: WebSocket connected: facc56d5-a303-4c46-a0d9-a7336ccede12
+2026-03-01 16:31:42,018 [server.main] ERROR: WebSocket error for session facc56d5-a303-4c46-a0d9-a7336ccede12: Cannot call "receive" once a disconnect message has been received.
+2026-03-01 16:31:43,158 [server.main] INFO: WebSocket connected: 4d050f1d-46f5-4d5c-b35f-faf332a1ba26
+2026-03-01 16:31:43,168 [server.main] ERROR: WebSocket error for session 4d050f1d-46f5-4d5c-b35f-faf332a1ba26: Cannot call "receive" once a disconnect message has been received.
+2026-03-01 16:31:57,898 [server.main] INFO: WebSocket connected: a6c833fe-5dae-409c-a223-cc1a98310646
+2026-03-01 16:31:57,998 [server.main] ERROR: WebSocket error for session a6c833fe-5dae-409c-a223-cc1a98310646: Cannot call "receive" once a disconnect message has been received.
+2026-03-01 16:32:01,871 [server.main] INFO: WebSocket connected: 9b2ced0a-c36b-4143-ba15-0024c6567597
+2026-03-01 16:32:01,884 [server.main] ERROR: WebSocket error for session 9b2ced0a-c36b-4143-ba15-0024c6567597: Cannot call "receive" once a disconnect message has been received.
+2026-03-01 16:32:03,147 [server.main] INFO: WebSocket connected: ce8fb366-6378-4e15-b60b-2702212ac484
+2026-03-01 16:32:03,245 [server.main] ERROR: WebSocket error for session ce8fb366-6378-4e15-b60b-2702212ac484: Cannot call "receive" once a disconnect message has been received.
+2026-03-01 16:32:06,118 [server.main] INFO: Starting server — initializing services...
+2026-03-01 16:32:06,118 [server.services.db] INFO: Opening database connection to chat_voice.db
+2026-03-01 16:32:06,118 [server.services.db] INFO: Database initialized at chat_voice.db
+2026-03-01 16:32:06,118 [server.services.stt] INFO: STT initialized with model path: /Users/jeff/mlx_models/distil-large-v3
+2026-03-01 16:32:06,566 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/prince-canuma/Kokoro-82M/revision/main "HTTP/1.1 200 OK"
+2026-03-01 16:32:07,583 [server.services.tts] INFO: TTS initialized with Kokoro MLX
+2026-03-01 16:32:07,583 [server.services.llm] INFO: LLM service initialized (claude-agent-sdk)
+2026-03-01 16:32:07,588 [server.services.search] INFO: Search service initialized
+2026-03-01 16:32:07,588 [server.main] INFO: All services initialized
+2026-03-01 16:32:07,589 [server.main] INFO: WebSocket connected: ffaa563f-e558-48b0-ba39-ff9a8b03c2af
+2026-03-01 16:32:22,339 [server.main] INFO: WebSocket connected: 48a44af6-7926-47cc-beb3-fadf4685c718
+2026-03-01 16:32:22,351 [server.main] ERROR: WebSocket error for session 48a44af6-7926-47cc-beb3-fadf4685c718: Cannot call "receive" once a disconnect message has been received.
+2026-03-01 16:33:30,647 [server.main] ERROR: WebSocket error for session ffaa563f-e558-48b0-ba39-ff9a8b03c2af: Cannot call "receive" once a disconnect message has been received.
+2026-03-01 16:33:30,748 [server.main] INFO: Shutting down services...
+2026-03-01 16:33:30,749 [server.services.db] INFO: Database connection closed
+2026-03-01 16:33:30,749 [server.services.stt] INFO: STT cleaned up
+2026-03-01 16:33:30,749 [server.services.tts] INFO: TTS cleaned up
+2026-03-01 16:33:30,749 [server.services.llm] INFO: LLM service cleaned up
+2026-03-01 16:33:30,754 [server.services.search] INFO: Search service cleaned up
+2026-03-01 16:33:30,754 [server.main] INFO: All services cleaned up
+2026-03-01 16:33:31,239 [server.main] INFO: Starting server — initializing services...
+2026-03-01 16:33:31,239 [server.services.db] INFO: Opening database connection to chat_voice.db
+2026-03-01 16:33:31,239 [server.services.db] INFO: Database initialized at chat_voice.db
+2026-03-01 16:33:31,240 [server.services.stt] INFO: STT initialized with model path: /Users/jeff/mlx_models/distil-large-v3
+2026-03-01 16:33:31,632 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/prince-canuma/Kokoro-82M/revision/main "HTTP/1.1 200 OK"
+2026-03-01 16:33:32,663 [server.services.tts] INFO: TTS initialized with Kokoro MLX
+2026-03-01 16:33:32,663 [server.services.llm] INFO: LLM service initialized (claude-agent-sdk)
+2026-03-01 16:33:32,667 [server.services.search] INFO: Search service initialized
+2026-03-01 16:33:32,667 [server.main] INFO: All services initialized
+2026-03-01 16:33:32,668 [server.main] INFO: WebSocket connected: ef56d960-b265-4a53-83dc-d3ae739bcf5d
+2026-03-01 16:34:58,884 [server.main] ERROR: WebSocket error for session ef56d960-b265-4a53-83dc-d3ae739bcf5d: Cannot call "receive" once a disconnect message has been received.
+2026-03-01 16:34:58,985 [server.main] INFO: Shutting down services...
+2026-03-01 16:34:58,986 [server.services.db] INFO: Database connection closed
+2026-03-01 16:34:58,987 [server.services.stt] INFO: STT cleaned up
+2026-03-01 16:34:58,988 [server.services.tts] INFO: TTS cleaned up
+2026-03-01 16:34:58,988 [server.services.llm] INFO: LLM service cleaned up
+2026-03-01 16:34:58,994 [server.services.search] INFO: Search service cleaned up
+2026-03-01 16:34:58,995 [server.main] INFO: All services cleaned up
+2026-03-01 16:36:36,370 [server.main] INFO: Starting server — initializing services...
+2026-03-01 16:36:36,370 [server.services.db] INFO: Opening database connection to chat_voice.db
+2026-03-01 16:36:36,371 [server.services.db] INFO: Database initialized at chat_voice.db
+2026-03-01 16:36:36,371 [server.services.stt] INFO: STT initialized with model path: /Users/jeff/mlx_models/distil-large-v3
+2026-03-01 16:36:36,729 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/prince-canuma/Kokoro-82M/revision/main "HTTP/1.1 200 OK"
+2026-03-01 16:36:37,732 [server.services.tts] INFO: TTS initialized with Kokoro MLX
+2026-03-01 16:36:37,732 [server.services.llm] INFO: LLM service initialized (claude-agent-sdk)
+2026-03-01 16:36:37,737 [server.services.search] INFO: Search service initialized
+2026-03-01 16:36:37,737 [server.main] INFO: All services initialized
+2026-03-01 16:36:42,339 [server.main] INFO: WebSocket connected: 10ad7b94-0d24-4724-bde1-9220c690e70f
+2026-03-01 16:37:05,798 [server.main] INFO: WebSocket connected: d2164486-b45b-4ca4-bd90-c72080b424bc
+2026-03-01 16:37:08,537 [server.main] INFO: Mode switched to voice for session d2164486-b45b-4ca4-bd90-c72080b424bc
+2026-03-01 16:37:17,343 [server.services.db] INFO: Created conversation 1a98997f-a705-4aea-bb0a-729307e77d73
+2026-03-01 16:37:17,343 [server.main] ERROR: WebSocket error for session d2164486-b45b-4ca4-bd90-c72080b424bc: Object of type datetime is not JSON serializable
+2026-03-01 16:37:18,434 [server.main] INFO: WebSocket connected: 995c9b73-cdc3-4d5b-b878-f9053d5fad84
+2026-03-01 16:37:27,686 [server.main] INFO: Mode switched to chat for session 995c9b73-cdc3-4d5b-b878-f9053d5fad84
+2026-03-01 16:37:30,728 [server.main] ERROR: WebSocket error for session 995c9b73-cdc3-4d5b-b878-f9053d5fad84: Cannot call "receive" once a disconnect message has been received.
+2026-03-01 16:37:30,801 [server.main] INFO: WebSocket connected: 1d176530-0510-43b3-b113-e19104a8fcb6

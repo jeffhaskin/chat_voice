@@ -10,8 +10,8 @@ _model = None
 def init_tts():
     global _model
     from mlx_audio.tts.utils import load_model
-    _model = load_model("mlx-community/Kokoro-82M-4bit")
-    logger.info("TTS initialized with Kokoro 4-bit MLX")
+    _model = load_model("prince-canuma/Kokoro-82M")
+    logger.info("TTS initialized with Kokoro MLX")
 
 def cleanup_tts():
     global _model
