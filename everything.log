@@ -91,3 +91,8 @@
 2026-03-01 16:08:38,231 [server.services.db] INFO: Database initialized at chat_voice.db
 2026-03-01 16:08:38,231 [server.services.stt] INFO: STT initialized with model path: /Users/jeff/mlx_models/distil-large-v3
 2026-03-01 16:08:38,668 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/mlx-community/Kokoro-82M-4bit/revision/main "HTTP/1.1 200 OK"
+2026-03-01 16:11:15,505 [server.main] INFO: Starting server — initializing services...
+2026-03-01 16:11:15,505 [server.services.db] INFO: Opening database connection to chat_voice.db
+2026-03-01 16:11:15,505 [server.services.db] INFO: Database initialized at chat_voice.db
+2026-03-01 16:11:15,505 [server.services.stt] INFO: STT initialized with model path: /Users/jeff/mlx_models/distil-large-v3
+2026-03-01 16:11:15,954 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/mlx-community/Kokoro-82M-4bit/revision/main "HTTP/1.1 200 OK"
