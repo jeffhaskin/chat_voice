@@ -1,0 +1,3 @@
+# Project Summary
+
+chat_voice is a mobile-first web app for text and voice chat with Claude. It runs entirely locally on macOS, using a single FastAPI server that handles WebSocket connections, local speech-to-text (lightning-whisper-mlx), local text-to-speech (Kokoro 4-bit MLX), and Claude Agent SDK calls with Brave Search as a tool. Conversations persist in SQLite. The React frontend provides two views — a chat view with message history and an input bar, and a voice view with a full-screen animated circle that responds to mic/playback amplitude. Users can seamlessly switch between text and voice modes within a single conversation. The app is designed primarily for use on iOS Safari via Tailscale HTTPS, with desktop as a secondary target.

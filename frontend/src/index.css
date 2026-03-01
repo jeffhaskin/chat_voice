@@ -1,0 +1,151 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  color-scheme: light dark;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+}
+
+/* Light mode (default) — matches claude.ai light theme */
+:root, [data-theme="light"] {
+  --bg: #f9f9f8;
+  --surface: #ffffff;
+  --surface-secondary: #f3f3f0;
+  --primary: #da7756;
+  --accent: #da7756;
+  --text: #2d2d2d;
+  --text-secondary: #6b6b6b;
+  --text-muted: #9b9b9b;
+  --user-bubble: #f3f3f0;
+  --assistant-bubble: #ffffff;
+  --border: rgba(0, 0, 0, 0.08);
+  --overlay: rgba(0, 0, 0, 0.4);
+  --input-bg: #f3f3f0;
+  --hover: rgba(0, 0, 0, 0.04);
+  --code-bg: #f3f3f0;
+  --scrollbar: rgba(0, 0, 0, 0.15);
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --status-green: #16a34a;
+  --status-red: #dc2626;
+  --voice-idle: #d1d1cd;
+  --voice-recording: #da7756;
+  --voice-processing: #d1d1cd;
+  --voice-speaking: #2d2d2d;
+}
+
+/* Dark mode — matches claude.ai dark theme */
+[data-theme="dark"] {
+  --bg: #2b2a27;
+  --surface: #35342f;
+  --surface-secondary: #3d3c37;
+  --primary: #da7756;
+  --accent: #da7756;
+  --text: #e8e4de;
+  --text-secondary: #a8a39b;
+  --text-muted: #7a756d;
+  --user-bubble: #3d3c37;
+  --assistant-bubble: #35342f;
+  --border: rgba(255, 255, 255, 0.08);
+  --overlay: rgba(0, 0, 0, 0.6);
+  --input-bg: #3d3c37;
+  --hover: rgba(255, 255, 255, 0.05);
+  --code-bg: #2b2a27;
+  --scrollbar: rgba(255, 255, 255, 0.15);
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --status-green: #22c55e;
+  --status-red: #ef4444;
+  --voice-idle: #3d3c37;
+  --voice-recording: #da7756;
+  --voice-processing: #3d3c37;
+  --voice-speaking: #e8e4de;
+}
+
+/* System preference fallback */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #2b2a27;
+    --surface: #35342f;
+    --surface-secondary: #3d3c37;
+    --primary: #da7756;
+    --accent: #da7756;
+    --text: #e8e4de;
+    --text-secondary: #a8a39b;
+    --text-muted: #7a756d;
+    --user-bubble: #3d3c37;
+    --assistant-bubble: #35342f;
+    --border: rgba(255, 255, 255, 0.08);
+    --overlay: rgba(0, 0, 0, 0.6);
+    --input-bg: #3d3c37;
+    --hover: rgba(255, 255, 255, 0.05);
+    --code-bg: #2b2a27;
+    --scrollbar: rgba(255, 255, 255, 0.15);
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    --status-green: #22c55e;
+    --status-red: #ef4444;
+    --voice-idle: #3d3c37;
+    --voice-recording: #da7756;
+    --voice-processing: #3d3c37;
+    --voice-speaking: #e8e4de;
+  }
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Söhne', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding-top: var(--safe-top);
+  padding-bottom: var(--safe-bottom);
+  padding-left: var(--safe-left);
+  padding-right: var(--safe-right);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+input, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  background: none;
+  color: inherit;
+  outline: none;
+}
+
+a {
+  color: var(--accent);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar);
+  border-radius: 3px;
+}

@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+websockets
+aiofiles
+aiosqlite
+pydantic
+python-dotenv
+httpx
+claude-agent-sdk
+lightning-whisper-mlx
+mlx-audio
+misaki
+numpy
