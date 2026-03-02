@@ -118,12 +118,13 @@ export default function VoiceView({
 
   const startRecording = useCallback(async () => {
     try {
-      // Create AudioContext on user gesture (Safari requirement)
-      if (!audioContextRef.current) {
-        audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)({
-          sampleRate: 16000,
-        })
+      // Create a fresh AudioContext each time (handles device changes on Safari)
+      if (audioContextRef.current) {
+        audioContextRef.current.close().catch(() => {})
       }
+      audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)({
+        sampleRate: 16000,
+      })
       const ctx = audioContextRef.current
       if (ctx.state === 'suspended') await ctx.resume()
 

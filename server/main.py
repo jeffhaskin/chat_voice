@@ -141,11 +141,17 @@ async def speak_text(session: Session, text: str):
         await send_json(session.websocket, {"type": "audio_complete"})
     except asyncio.CancelledError:
         logger.info("TTS cancelled (interrupt)")
-        await send_json(session.websocket, {"type": "audio_complete"})
+        try:
+            await send_json(session.websocket, {"type": "audio_complete"})
+        except Exception:
+            pass
     except Exception as e:
         logger.error("TTS error: %s", e)
-        await send_json(session.websocket, {"type": "error", "message": f"TTS failed: {e}"})
-        await send_json(session.websocket, {"type": "audio_complete"})
+        try:
+            await send_json(session.websocket, {"type": "error", "message": f"TTS failed: {e}"})
+            await send_json(session.websocket, {"type": "audio_complete"})
+        except Exception:
+            pass
     finally:
         session.active_tts_task = None
 

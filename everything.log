@@ -470,3 +470,91 @@ RuntimeError: Unexpected ASGI message 'websocket.send', after sending 'websocket
 2026-03-01 16:47:12,218 [server.main] INFO: WebSocket connected: 5f6127eb-f18c-4d26-9c86-a0942fa4c231
 2026-03-01 16:48:32,480 [server.main] INFO: Mode switched to chat for session 5f6127eb-f18c-4d26-9c86-a0942fa4c231
 2026-03-01 16:48:34,703 [server.services.db] INFO: Deleted conversation 7fb408de-6ba5-4a31-9f78-26fcab5e524c and its messages
+2026-03-01 16:53:10,184 [server.main] ERROR: WebSocket error for session 8d52953d-60c6-4a9b-b263-ee48b40065bb: Cannot call "receive" once a disconnect message has been received.
+2026-03-01 16:53:10,201 [server.main] ERROR: WebSocket error for session 5f6127eb-f18c-4d26-9c86-a0942fa4c231: Cannot call "receive" once a disconnect message has been received.
+2026-03-01 16:53:10,282 [server.main] INFO: Shutting down services...
+2026-03-01 16:53:10,283 [server.services.db] INFO: Database connection closed
+2026-03-01 16:53:10,283 [server.services.stt] INFO: STT cleaned up
+2026-03-01 16:53:10,284 [server.services.tts] INFO: TTS cleaned up
+2026-03-01 16:53:10,284 [server.services.llm] INFO: LLM service cleaned up
+2026-03-01 16:53:10,291 [server.services.search] INFO: Search service cleaned up
+2026-03-01 16:53:10,291 [server.main] INFO: All services cleaned up
+2026-03-01 16:53:10,774 [server.main] INFO: Starting server — initializing services...
+2026-03-01 16:53:10,774 [server.services.db] INFO: Opening database connection to chat_voice.db
+2026-03-01 16:53:10,775 [server.services.db] INFO: Database initialized at chat_voice.db
+2026-03-01 16:53:11,829 [httpx] INFO: HTTP Request: HEAD https://huggingface.co/mustafaaljadery/distil-whisper-mlx/resolve/main/mlx_models/distil-large-v3/weights.npz "HTTP/1.1 302 Found"
+2026-03-01 16:53:11,916 [httpx] INFO: HTTP Request: HEAD https://huggingface.co/mustafaaljadery/distil-whisper-mlx/resolve/main/mlx_models/distil-large-v3/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-01 16:53:12,022 [httpx] INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/mustafaaljadery/distil-whisper-mlx/8e16457a2a272e8344eefffdea7f7d6d81310761/mlx_models%2Fdistil-large-v3%2Fconfig.json "HTTP/1.1 200 OK"
+2026-03-01 16:53:12,025 [server.services.stt] INFO: STT initialized with model: distil-large-v3
+2026-03-01 16:53:12,107 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/prince-canuma/Kokoro-82M/revision/main "HTTP/1.1 200 OK"
+2026-03-01 16:53:13,220 [server.services.tts] INFO: TTS initialized with Kokoro MLX
+2026-03-01 16:53:13,220 [server.services.llm] INFO: LLM service initialized (claude-agent-sdk)
+2026-03-01 16:53:13,225 [server.services.search] INFO: Search service initialized
+2026-03-01 16:53:13,225 [server.main] INFO: All services initialized
+2026-03-01 16:53:13,228 [server.main] INFO: WebSocket connected: db0a2a00-60af-4d79-9915-744d0778cee8
+2026-03-01 16:53:13,289 [server.main] INFO: WebSocket connected: 46146684-840f-4a4d-9e4f-39f12911a5dd
+2026-03-01 16:54:37,835 [server.main] ERROR: WebSocket error for session db0a2a00-60af-4d79-9915-744d0778cee8: Cannot call "receive" once a disconnect message has been received.
+2026-03-01 16:54:37,860 [server.main] ERROR: WebSocket error for session 46146684-840f-4a4d-9e4f-39f12911a5dd: Cannot call "receive" once a disconnect message has been received.
+2026-03-01 16:54:37,933 [server.main] INFO: Shutting down services...
+2026-03-01 16:54:37,934 [server.services.db] INFO: Database connection closed
+2026-03-01 16:54:37,934 [server.services.stt] INFO: STT cleaned up
+2026-03-01 16:54:37,935 [server.services.tts] INFO: TTS cleaned up
+2026-03-01 16:54:37,936 [server.services.llm] INFO: LLM service cleaned up
+2026-03-01 16:54:37,942 [server.services.search] INFO: Search service cleaned up
+2026-03-01 16:54:37,942 [server.main] INFO: All services cleaned up
+2026-03-01 16:54:47,798 [server.main] INFO: Starting server — initializing services...
+2026-03-01 16:54:47,798 [server.services.db] INFO: Opening database connection to chat_voice.db
+2026-03-01 16:54:47,798 [server.services.db] INFO: Database initialized at chat_voice.db
+2026-03-01 16:54:48,865 [httpx] INFO: HTTP Request: HEAD https://huggingface.co/mustafaaljadery/distil-whisper-mlx/resolve/main/mlx_models/distil-large-v3/weights.npz "HTTP/1.1 302 Found"
+2026-03-01 16:54:49,009 [httpx] INFO: HTTP Request: HEAD https://huggingface.co/mustafaaljadery/distil-whisper-mlx/resolve/main/mlx_models/distil-large-v3/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-01 16:54:49,031 [httpx] INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/mustafaaljadery/distil-whisper-mlx/8e16457a2a272e8344eefffdea7f7d6d81310761/mlx_models%2Fdistil-large-v3%2Fconfig.json "HTTP/1.1 200 OK"
+2026-03-01 16:54:49,036 [server.services.stt] INFO: STT initialized with model: distil-large-v3
+2026-03-01 16:54:49,154 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/prince-canuma/Kokoro-82M/revision/main "HTTP/1.1 200 OK"
+2026-03-01 16:54:50,216 [server.services.tts] INFO: TTS initialized with Kokoro MLX
+2026-03-01 16:54:50,216 [server.services.llm] INFO: LLM service initialized (claude-agent-sdk)
+2026-03-01 16:54:50,220 [server.services.search] INFO: Search service initialized
+2026-03-01 16:54:50,220 [server.main] INFO: All services initialized
+2026-03-01 16:54:51,478 [server.main] INFO: WebSocket connected: e5ab452e-0d9f-4947-80d7-5f9ef0180ef2
+2026-03-01 16:54:53,241 [server.main] INFO: WebSocket connected: ed7649cd-851f-4f17-93a1-4f236174b9ae
+2026-03-01 16:54:54,013 [server.main] ERROR: WebSocket error for session ed7649cd-851f-4f17-93a1-4f236174b9ae: Cannot call "receive" once a disconnect message has been received.
+2026-03-01 16:54:54,101 [server.main] INFO: WebSocket connected: efa6fb78-ebce-4aec-9b42-1be560d45bcb
+2026-03-01 16:54:57,008 [server.main] INFO: Mode switched to voice for session efa6fb78-ebce-4aec-9b42-1be560d45bcb
+2026-03-01 16:55:04,232 [server.services.db] INFO: Created conversation 1eb8b3eb-0f74-4c09-9007-b8555a0b47e5
+2026-03-01 16:55:04,235 [server.services.stt] INFO: Transcribing 147456 bytes of audio...
+2026-03-01 16:55:06,084 [server.services.stt] INFO: Transcription result: Hey, are you there? I have a couple of questions for you....
+2026-03-01 16:55:06,086 [server.services.db] INFO: Auto-titled conversation 1eb8b3eb-0f74-4c09-9007-b8555a0b47e5: Hey, are you there? I have a couple of questions f
+2026-03-01 16:55:06,086 [server.services.db] INFO: Created message ff4c7a58-6dc5-4837-9570-0d5808edfec9 in conversation 1eb8b3eb-0f74-4c09-9007-b8555a0b47e5
+2026-03-01 16:55:06,087 [claude_agent_sdk._internal.transport.subprocess_cli] INFO: Using bundled Claude Code CLI: /Users/jeff/Programs/chat_voice/.venv/lib/python3.13/site-packages/claude_agent_sdk/_bundled/claude
+2026-03-01 16:55:10,831 [server.services.db] INFO: Created message c0454cb9-22e6-4133-bf62-072cd7d0a950 in conversation 1eb8b3eb-0f74-4c09-9007-b8555a0b47e5
+2026-03-01 16:55:10,832 [server.services.db] INFO: Updated conversation 1eb8b3eb-0f74-4c09-9007-b8555a0b47e5
+2026-03-01 16:55:10,832 [server.services.tts] INFO: Generating speech for: Yes, I'm here! Go ahead and ask your questions — I'm happy to help....
+2026-03-01 16:55:13,579 [server.services.tts] INFO: Generated 1 audio chunks
+2026-03-01 16:58:11,048 [server.main] INFO: Starting server — initializing services...
+2026-03-01 16:58:11,048 [server.services.db] INFO: Opening database connection to chat_voice.db
+2026-03-01 16:58:11,049 [server.services.db] INFO: Database initialized at chat_voice.db
+2026-03-01 16:58:12,262 [httpx] INFO: HTTP Request: HEAD https://huggingface.co/mustafaaljadery/distil-whisper-mlx/resolve/main/mlx_models/distil-large-v3/weights.npz "HTTP/1.1 302 Found"
+2026-03-01 16:58:12,438 [httpx] INFO: HTTP Request: HEAD https://huggingface.co/mustafaaljadery/distil-whisper-mlx/resolve/main/mlx_models/distil-large-v3/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-01 16:58:12,461 [httpx] INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/mustafaaljadery/distil-whisper-mlx/8e16457a2a272e8344eefffdea7f7d6d81310761/mlx_models%2Fdistil-large-v3%2Fconfig.json "HTTP/1.1 200 OK"
+2026-03-01 16:58:12,464 [server.services.stt] INFO: STT initialized with model: distil-large-v3
+2026-03-01 16:58:12,582 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/prince-canuma/Kokoro-82M/revision/main "HTTP/1.1 200 OK"
+2026-03-01 16:58:13,941 [server.services.tts] INFO: TTS initialized with Kokoro MLX
+2026-03-01 16:58:13,941 [server.services.llm] INFO: LLM service initialized (claude-agent-sdk)
+2026-03-01 16:58:13,945 [server.services.search] INFO: Search service initialized
+2026-03-01 16:58:13,946 [server.main] INFO: All services initialized
+2026-03-01 16:58:22,960 [server.main] INFO: WebSocket connected: 47bcee8c-d81c-411d-b1c3-a796e8afc518
+2026-03-01 16:58:27,505 [server.main] INFO: WebSocket connected: e5a661fa-b299-472e-9d9d-405f0de19612
+2026-03-01 16:58:55,826 [server.main] INFO: Mode switched to chat for session 47bcee8c-d81c-411d-b1c3-a796e8afc518
+2026-03-01 16:58:58,090 [server.services.db] INFO: Deleted conversation 1eb8b3eb-0f74-4c09-9007-b8555a0b47e5 and its messages
+2026-03-01 16:59:03,010 [server.main] INFO: Mode switched to voice for session 47bcee8c-d81c-411d-b1c3-a796e8afc518
+2026-03-01 16:59:12,116 [server.services.db] INFO: Created conversation a05386e0-531d-463a-932d-c9bae11cce30
+2026-03-01 16:59:25,735 [server.main] INFO: Mode switched to chat for session 47bcee8c-d81c-411d-b1c3-a796e8afc518
+2026-03-01 16:59:27,999 [server.services.db] INFO: Deleted conversation a05386e0-531d-463a-932d-c9bae11cce30 and its messages
+2026-03-01 16:59:33,007 [server.main] INFO: Mode switched to voice for session 47bcee8c-d81c-411d-b1c3-a796e8afc518
+2026-03-01 16:59:59,622 [server.services.db] INFO: Created conversation 50355e09-53fc-4367-9c9a-57819cabeef7
+2026-03-01 17:00:35,120 [server.main] INFO: Mode switched to chat for session 47bcee8c-d81c-411d-b1c3-a796e8afc518
+2026-03-01 17:00:36,729 [server.main] ERROR: WebSocket error for session e5a661fa-b299-472e-9d9d-405f0de19612: Cannot call "receive" once a disconnect message has been received.
+2026-03-01 17:00:38,507 [server.main] INFO: WebSocket connected: add57914-d614-4cb3-b089-61f30e38f767
+2026-03-01 17:02:52,051 [server.main] ERROR: WebSocket error for session add57914-d614-4cb3-b089-61f30e38f767: Cannot call "receive" once a disconnect message has been received.
+2026-03-01 17:02:53,200 [server.main] INFO: WebSocket connected: b29b8a91-d2f8-476b-8400-1255704c5116
+2026-03-01 17:03:41,210 [server.main] ERROR: WebSocket error for session 47bcee8c-d81c-411d-b1c3-a796e8afc518: Cannot call "receive" once a disconnect message has been received.
+2026-03-01 17:09:32,544 [server.main] ERROR: WebSocket error for session b29b8a91-d2f8-476b-8400-1255704c5116: Cannot call "receive" once a disconnect message has been received.
