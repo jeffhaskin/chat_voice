@@ -161,14 +161,16 @@ function renderInline(text, startKey) {
   return { elements, nextKey: key }
 }
 
-export default function MessageBubble({ message }) {
+export default function MessageBubble({ message, onCopy }) {
   const isUser = message.role === 'user'
 
   return (
     <div style={{ ...styles.wrapper, ...(isUser ? styles.user : styles.assistant) }}>
       <div
+        onClick={() => navigator.clipboard.writeText(message.content).then(() => onCopy?.())}
         style={{
           ...styles.bubble,
+          cursor: 'pointer',
           background: isUser ? 'var(--user-bubble)' : 'var(--assistant-bubble)',
           borderBottomRightRadius: isUser ? 4 : 16,
           borderBottomLeftRadius: isUser ? 16 : 4,
