@@ -67,9 +67,14 @@ app = FastAPI(lifespan=lifespan)
 
 # --- Tool handler for Claude ---
 
+_last_search_sources = []
+
 async def handle_tool_call(tool_name: str, tool_input: dict) -> str:
+    global _last_search_sources
     if tool_name == "search_web":
-        return await search.search_web(tool_input["query"])
+        result = await search.search_web(tool_input["query"])
+        _last_search_sources = result["sources"]
+        return result["text"]
     return f"Unknown tool: {tool_name}"
 
 
@@ -116,7 +121,10 @@ async def handle_text_message(session: Session, content: str, conversation_id: s
         elif event["type"] == "complete":
             full_response = event["content"]
 
-    await send_json(session.websocket, {"type": "response_complete", "content": full_response})
+    global _last_search_sources
+    sources = _last_search_sources
+    _last_search_sources = []
+    await send_json(session.websocket, {"type": "response_complete", "content": full_response, "sources": sources})
 
     # Store assistant message
     await db.create_message(conversation_id, "assistant", full_response, "text")
@@ -136,8 +144,12 @@ async def handle_text_message(session: Session, content: str, conversation_id: s
 async def speak_text(session: Session, text: str):
     """Generate TTS and stream audio chunks to client."""
     try:
-        async for chunk in tts.generate_speech_chunks(text):
+        provider = await db.get_setting("tts_provider") or "kokoro"
+        chunk_count = 0
+        async for chunk in tts.generate_speech_chunks(text, provider=provider):
             await session.websocket.send_bytes(chunk)
+            chunk_count += 1
+        logger.info("Sent %d audio chunks to client", chunk_count)
         await send_json(session.websocket, {"type": "audio_complete"})
     except asyncio.CancelledError:
         logger.info("TTS cancelled (interrupt)")

@@ -77,7 +77,12 @@ export default function App() {
           const updated = [...prev]
           const last = updated[updated.length - 1]
           if (last && last.role === 'assistant') {
-            updated[updated.length - 1] = { ...last, streaming: false }
+            updated[updated.length - 1] = {
+              ...last,
+              streaming: false,
+              toolUse: last.toolUse ? { ...last.toolUse, status: 'done' } : undefined,
+              sources: msg.sources?.length ? msg.sources : last.sources,
+            }
           }
           return updated
         })
@@ -100,7 +105,7 @@ export default function App() {
           if (last && last.role === 'assistant') {
             updated[updated.length - 1] = {
               ...last,
-              toolUse: { name: msg.tool_name || msg.name, status: 'running' },
+              toolUse: { name: msg.tool, status: 'running' },
             }
           }
           return updated

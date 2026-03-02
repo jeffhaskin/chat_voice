@@ -63,6 +63,32 @@ const styles = {
     color: 'var(--text)',
     resize: 'vertical',
   },
+  section: {
+    marginTop: 20,
+  },
+  toggleRow: {
+    display: 'flex',
+    gap: 8,
+  },
+  toggleBtn: {
+    flex: 1,
+    minHeight: 44,
+    borderRadius: 10,
+    fontSize: 14,
+    fontWeight: 600,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    cursor: 'pointer',
+    border: '2px solid var(--border)',
+    background: 'var(--input-bg)',
+    color: 'var(--text)',
+  },
+  toggleBtnActive: {
+    border: '2px solid var(--accent)',
+    background: 'var(--accent)',
+    color: '#fff',
+  },
   saveBtn: {
     margin: '16px 20px 20px',
     padding: 14,
@@ -87,30 +113,41 @@ const styles = {
 
 export default function SettingsModal({ onClose }) {
   const [systemPrompt, setSystemPrompt] = useState('')
+  const [ttsProvider, setTtsProvider] = useState('kokoro')
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [status, setStatus] = useState('')
 
   useEffect(() => {
-    fetch('/api/settings/system_prompt')
-      .then((r) => r.ok ? r.json() : { system_prompt: '' })
-      .then((data) => {
-        setSystemPrompt(data.system_prompt || '')
-        setLoading(false)
-      })
-      .catch(() => setLoading(false))
+    Promise.all([
+      fetch('/api/settings/system_prompt')
+        .then((r) => r.ok ? r.json() : { value: '' }),
+      fetch('/api/settings/tts_provider')
+        .then((r) => r.ok ? r.json() : { value: 'kokoro' }),
+    ]).then(([promptData, ttsData]) => {
+      setSystemPrompt(promptData.value || '')
+      setTtsProvider(ttsData.value || 'kokoro')
+      setLoading(false)
+    }).catch(() => setLoading(false))
   }, [])
 
   const handleSave = async () => {
     setSaving(true)
     setStatus('')
     try {
-      const res = await fetch('/api/settings/system_prompt', {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ system_prompt: systemPrompt }),
-      })
-      if (res.ok) {
+      const [res1, res2] = await Promise.all([
+        fetch('/api/settings/system_prompt', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ value: systemPrompt }),
+        }),
+        fetch('/api/settings/tts_provider', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ value: ttsProvider }),
+        }),
+      ])
+      if (res1.ok && res2.ok) {
         setStatus('Saved')
         setTimeout(() => setStatus(''), 2000)
       } else {
@@ -140,6 +177,31 @@ export default function SettingsModal({ onClose }) {
             disabled={loading}
             placeholder="Enter a system prompt..."
           />
+          <div style={styles.section}>
+            <label style={styles.label}>TTS Provider</label>
+            <div style={styles.toggleRow}>
+              <button
+                style={{
+                  ...styles.toggleBtn,
+                  ...(ttsProvider === 'kokoro' ? styles.toggleBtnActive : {}),
+                }}
+                onClick={() => setTtsProvider('kokoro')}
+                disabled={loading}
+              >
+                Kokoro (Local)
+              </button>
+              <button
+                style={{
+                  ...styles.toggleBtn,
+                  ...(ttsProvider === 'edge' ? styles.toggleBtnActive : {}),
+                }}
+                onClick={() => setTtsProvider('edge')}
+                disabled={loading}
+              >
+                Edge TTS
+              </button>
+            </div>
+          </div>
         </div>
         {status && <div style={styles.status}>{status}</div>}
         <button

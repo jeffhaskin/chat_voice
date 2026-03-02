@@ -22,10 +22,10 @@ async def cleanup_search():
     _client = None
     logger.info("Search service cleaned up")
 
-async def search_web(query: str, count: int = 5) -> str:
-    """Execute a Brave web search and return formatted results."""
+async def search_web(query: str, count: int = 5) -> dict:
+    """Execute a Brave web search and return formatted results with structured sources."""
     if not _api_key:
-        return "Search unavailable: BRAVE_SEARCH_API_KEY not configured"
+        return {"text": "Search unavailable: BRAVE_SEARCH_API_KEY not configured", "sources": []}
 
     logger.info(f"Searching: {query}")
     resp = await _client.get(
@@ -40,12 +40,15 @@ async def search_web(query: str, count: int = 5) -> str:
     data = resp.json()
 
     results = []
+    sources = []
     for item in data.get("web", {}).get("results", []):
         title = item.get("title", "")
         url = item.get("url", "")
         description = item.get("description", "")
         results.append(f"**{title}**\n{url}\n{description}")
+        if title and url:
+            sources.append({"title": title, "url": url})
 
     formatted = "\n\n".join(results) if results else "No results found."
     logger.info(f"Search '{query}': {len(results)} results")
-    return formatted
+    return {"text": formatted, "sources": sources}

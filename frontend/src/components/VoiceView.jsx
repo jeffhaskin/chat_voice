@@ -178,6 +178,17 @@ export default function VoiceView({
       case 'recording':
         stopRecording()
         setAmplitude(0)
+        // Create playback AudioContext on this tap gesture (Safari iOS requirement)
+        if (playbackCtxRef.current) {
+          playbackCtxRef.current.close().catch(() => {})
+        }
+        playbackCtxRef.current = new (window.AudioContext || window.webkitAudioContext)({
+          sampleRate: 24000,
+        })
+        const playAnalyser = playbackCtxRef.current.createAnalyser()
+        playAnalyser.fftSize = 256
+        playAnalyser.connect(playbackCtxRef.current.destination)
+        playbackAnalyserRef.current = playAnalyser
         setState('processing')
         sendAudioComplete(conversationId)
         break
@@ -189,14 +200,19 @@ export default function VoiceView({
       case 'speaking':
         // Interrupt playback and start recording
         sendInterrupt()
-        stopPlayback()
+        stopPlayback({ closeContext: true })
         startRecording()
         break
     }
   }, [state, startRecording, stopRecording, sendAudioComplete, sendInterrupt, conversationId])
 
   // Audio playback
-  const stopPlayback = useCallback(() => {
+  const stopPlayback = useCallback(({ closeContext = false } = {}) => {
+    if (closeContext && playbackCtxRef.current) {
+      playbackCtxRef.current.close().catch(() => {})
+      playbackCtxRef.current = null
+      playbackAnalyserRef.current = null
+    }
     playbackQueue.current = []
     playbackTime.current = 0
     cancelAnimationFrame(animFrameRef.current)
@@ -204,15 +220,7 @@ export default function VoiceView({
   }, [])
 
   const playAudioChunk = useCallback((arrayBuffer) => {
-    if (!playbackCtxRef.current) {
-      playbackCtxRef.current = new (window.AudioContext || window.webkitAudioContext)({
-        sampleRate: 24000,
-      })
-      const analyser = playbackCtxRef.current.createAnalyser()
-      analyser.fftSize = 256
-      analyser.connect(playbackCtxRef.current.destination)
-      playbackAnalyserRef.current = analyser
-    }
+    if (!playbackCtxRef.current) return
 
     const ctx = playbackCtxRef.current
     if (ctx.state === 'suspended') ctx.resume()
@@ -308,15 +316,6 @@ export default function VoiceView({
 
       <div style={styles.textArea}>
         <div style={styles.stateLabel}>{stateLabels[state]}</div>
-        {lastUserVoice && (
-          <div style={styles.transcription}>{lastUserVoice.content}</div>
-        )}
-        {lastAssistant && (
-          <div style={styles.response}>
-            {lastAssistant.content?.slice(0, 200)}
-            {lastAssistant.content?.length > 200 ? '...' : ''}
-          </div>
-        )}
       </div>
     </div>
   )

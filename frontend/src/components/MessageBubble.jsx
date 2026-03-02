@@ -30,6 +30,25 @@ const styles = {
     fontStyle: 'italic',
     marginTop: 4,
   },
+  sourcesRow: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: 6,
+    marginTop: 8,
+  },
+  sourceBadge: {
+    display: 'inline-block',
+    fontSize: 11,
+    padding: '3px 8px',
+    borderRadius: 10,
+    background: 'var(--code-bg)',
+    color: 'var(--text)',
+    textDecoration: 'none',
+    maxWidth: 180,
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+  },
   cursor: {
     display: 'inline-block',
     width: 2,
@@ -159,11 +178,16 @@ export default function MessageBubble({ message }) {
         {renderContent(message.content)}
         {message.streaming && <span style={styles.cursor} />}
         {message.source === 'voice' && <span style={styles.voiceIcon}>&#127908;</span>}
-        {message.toolUse && (
-          <div style={styles.toolUse}>
-            {message.toolUse.status === 'running'
-              ? `Searching (${message.toolUse.name})...`
-              : `Used ${message.toolUse.name}`}
+        {message.toolUse && message.toolUse.status === 'running' && (
+          <div style={styles.toolUse}>Searching...</div>
+        )}
+        {message.sources?.length > 0 && (
+          <div style={styles.sourcesRow}>
+            {message.sources.map((s, i) => (
+              <a key={i} href={s.url} target="_blank" rel="noopener noreferrer" style={styles.sourceBadge}>
+                {s.title}
+              </a>
+            ))}
           </div>
         )}
       </div>
