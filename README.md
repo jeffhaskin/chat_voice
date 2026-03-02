@@ -1,6 +1,8 @@
 # chat_voice
 
-A mobile-first web app for text and voice chat with Claude. Runs locally on macOS with a FastAPI backend, React frontend, local speech-to-text (lightning-whisper-mlx), local text-to-speech (Kokoro 4-bit MLX), and Claude Agent SDK with Brave Search as a tool.
+Claude app's voice mode is hot garbage and doesn't work, so I made my own.
+
+A mobile-first web app for text and voice chat with Claude. Runs locally on macOS with a FastAPI backend, React frontend, local speech-to-text (lightning-whisper-mlx), local text-to-speech (Kokoro MLX / Edge TTS / Browser TTS), and Claude Agent SDK with Brave Search as a tool.
 
 ## AI Agents
 

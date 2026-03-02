@@ -13,7 +13,7 @@ const styles = {
   },
   toast: {
     position: 'fixed',
-    bottom: 'calc(24px + var(--safe-bottom))',
+    bottom: 'calc(80px + var(--safe-bottom))',
     right: 16,
     background: 'var(--primary)',
     color: 'white',
