@@ -5,3 +5,7 @@ __pycache__/
 *.pyc
 frontend/dist/
 .env
+mlx_models/
+.claude/
+everything.log
+chat_voice.db
