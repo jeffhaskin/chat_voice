@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 const styles = {
   wrapper: {
     display: 'flex',
@@ -69,6 +71,7 @@ const styles = {
     fontSize: 13,
     overflowX: 'auto',
     margin: '4px 0',
+    whiteSpace: 'pre-wrap',
   },
   inlineCode: {
     background: 'var(--code-bg)',
@@ -77,6 +80,38 @@ const styles = {
     fontFamily: 'monospace',
     fontSize: 13,
   },
+}
+
+function CodeBlock({ code }) {
+  const [expanded, setExpanded] = useState(false)
+  const lines = code.split('\n')
+  const needsCollapse = lines.length > 6
+
+  return (
+    <div>
+      <div style={{
+        ...styles.codeBlock,
+        ...(needsCollapse && !expanded ? { maxHeight: 120, overflow: 'hidden', position: 'relative' } : {}),
+      }}>
+        {needsCollapse && !expanded ? lines.slice(0, 6).join('\n') : code}
+        {needsCollapse && !expanded && (
+          <div style={{
+            position: 'absolute', bottom: 0, left: 0, right: 0, height: 40,
+            background: 'linear-gradient(transparent, var(--code-bg))',
+            pointerEvents: 'none',
+          }} />
+        )}
+      </div>
+      {needsCollapse && (
+        <div
+          onClick={() => setExpanded(e => !e)}
+          style={{ color: 'var(--accent)', fontSize: 13, cursor: 'pointer', marginTop: 4 }}
+        >
+          {expanded ? 'Show less' : 'Show more'}
+        </div>
+      )}
+    </div>
+  )
 }
 
 function renderContent(text) {
@@ -93,11 +128,7 @@ function renderContent(text) {
 
     if (line.startsWith('```')) {
       if (inCodeBlock) {
-        parts.push(
-          <div key={key++} style={styles.codeBlock}>
-            {codeLines.join('\n')}
-          </div>
-        )
+        parts.push(<CodeBlock key={key++} code={codeLines.join('\n')} />)
         codeLines = []
         inCodeBlock = false
       } else {
@@ -111,17 +142,60 @@ function renderContent(text) {
       continue
     }
 
+    // Horizontal rule
+    if (line.trim() === '---') {
+      parts.push(<hr key={key++} style={{ border: 'none', borderTop: '1px solid var(--border)', margin: '8px 0' }} />)
+      continue
+    }
+
+    // Headings
+    const headingMatch = line.match(/^(#{1,3})\s+(.+)/)
+    if (headingMatch) {
+      const level = headingMatch[1].length
+      const sizes = { 1: 20, 2: 18, 3: 16 }
+      const rendered = renderInline(headingMatch[2], key)
+      key = rendered.nextKey
+      parts.push(
+        <div key={key++} style={{ fontSize: sizes[level], fontWeight: 'bold', margin: '8px 0 4px' }}>
+          {rendered.elements}
+        </div>
+      )
+      continue
+    }
+
+    // Unordered list
+    if ((line.startsWith('- ') || (line.startsWith('* ') && !line.startsWith('**')))) {
+      const content = line.startsWith('- ') ? line.slice(2) : line.slice(2)
+      const rendered = renderInline(content, key)
+      key = rendered.nextKey
+      parts.push(
+        <div key={key++} style={{ paddingLeft: 20 }}>
+          {'\u2022 '}{rendered.elements}
+        </div>
+      )
+      continue
+    }
+
+    // Ordered list
+    const olMatch = line.match(/^(\d+)\.\s+(.+)/)
+    if (olMatch) {
+      const rendered = renderInline(olMatch[2], key)
+      key = rendered.nextKey
+      parts.push(
+        <div key={key++} style={{ paddingLeft: 20 }}>
+          {olMatch[1]}. {rendered.elements}
+        </div>
+      )
+      continue
+    }
+
     const rendered = renderInline(line, key)
     key = rendered.nextKey
     parts.push(<div key={key++}>{rendered.elements.length > 0 ? rendered.elements : '\u00A0'}</div>)
   }
 
   if (inCodeBlock && codeLines.length > 0) {
-    parts.push(
-      <div key={key++} style={styles.codeBlock}>
-        {codeLines.join('\n')}
-      </div>
-    )
+    parts.push(<CodeBlock key={key++} code={codeLines.join('\n')} />)
   }
 
   return parts
@@ -130,7 +204,7 @@ function renderContent(text) {
 function renderInline(text, startKey) {
   let key = startKey
   const elements = []
-  const regex = /(\*\*(.+?)\*\*|`(.+?)`|\[(.+?)\]\((.+?)\))/g
+  const regex = /(\*\*(.+?)\*\*|\*(.+?)\*|`(.+?)`|\[(.+?)\]\((.+?)\))/g
   let lastIndex = 0
   let match
 
@@ -142,11 +216,13 @@ function renderInline(text, startKey) {
     if (match[2]) {
       elements.push(<strong key={key++}>{match[2]}</strong>)
     } else if (match[3]) {
-      elements.push(<code key={key++} style={styles.inlineCode}>{match[3]}</code>)
-    } else if (match[4] && match[5]) {
+      elements.push(<em key={key++}>{match[3]}</em>)
+    } else if (match[4]) {
+      elements.push(<code key={key++} style={styles.inlineCode}>{match[4]}</code>)
+    } else if (match[5] && match[6]) {
       elements.push(
-        <a key={key++} href={match[5]} target="_blank" rel="noopener noreferrer">
-          {match[4]}
+        <a key={key++} href={match[6]} target="_blank" rel="noopener noreferrer">
+          {match[5]}
         </a>
       )
     }
