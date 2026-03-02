@@ -34,7 +34,10 @@ export default function App() {
       const res = await fetch(`${API}/conversations/${convId}/messages`)
       if (res.ok) {
         const data = await res.json()
-        setMessages(data)
+        setMessages(data.map(m => ({
+          ...m,
+          sources: m.sources ? JSON.parse(m.sources) : undefined,
+        })))
       }
     } catch {
       // ignore

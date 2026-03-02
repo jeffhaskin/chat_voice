@@ -16,6 +16,7 @@ class Message(BaseModel):
     role: str  # "user" or "assistant"
     content: str
     source: str  # "text" or "voice"
+    sources: Optional[str] = None
     created_at: datetime
 
 

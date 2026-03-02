@@ -128,7 +128,7 @@ async def handle_text_message(session: Session, content: str, conversation_id: s
     await send_json(session.websocket, {"type": "response_complete", "content": full_response, "sources": sources})
 
     # Store assistant message
-    await db.create_message(conversation_id, "assistant", full_response, "text")
+    await db.create_message(conversation_id, "assistant", full_response, "text", sources=json.dumps(sources) if sources else None)
 
     # Update conversation timestamp
     conv = await db.get_conversation(conversation_id)

@@ -50,6 +50,14 @@ async def init_db(db_path: str = "chat_voice.db") -> None:
         """
     )
     await db.commit()
+
+    # Migration: add sources column if it doesn't exist
+    try:
+        await db.execute("ALTER TABLE messages ADD COLUMN sources TEXT DEFAULT NULL")
+        await db.commit()
+    except Exception:
+        pass  # Column already exists
+
     logger.info("Database initialized at %s", _db_path)
 
 
@@ -121,14 +129,14 @@ async def delete_conversation(conversation_id: str) -> None:
 
 
 async def create_message(
-    conversation_id: str, role: str, content: str, source: str
+    conversation_id: str, role: str, content: str, source: str, sources: str | None = None
 ) -> Message:
     db = await _get_db()
     now = datetime.now(timezone.utc).isoformat()
     message_id = str(uuid.uuid4())
     await db.execute(
-        "INSERT INTO messages (id, conversation_id, role, content, source, created_at) VALUES (?, ?, ?, ?, ?, ?)",
-        (message_id, conversation_id, role, content, source, now),
+        "INSERT INTO messages (id, conversation_id, role, content, source, sources, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)",
+        (message_id, conversation_id, role, content, source, sources, now),
     )
 
     # Auto-title conversation from first user message if no title exists
@@ -153,6 +161,7 @@ async def create_message(
         role=role,
         content=content,
         source=source,
+        sources=sources,
         created_at=now,
     )
 
@@ -160,7 +169,7 @@ async def create_message(
 async def list_messages(conversation_id: str) -> list[Message]:
     db = await _get_db()
     cursor = await db.execute(
-        "SELECT id, conversation_id, role, content, source, created_at FROM messages WHERE conversation_id = ? ORDER BY created_at ASC",
+        "SELECT id, conversation_id, role, content, source, sources, created_at FROM messages WHERE conversation_id = ? ORDER BY created_at ASC",
         (conversation_id,),
     )
     rows = await cursor.fetchall()
@@ -171,6 +180,7 @@ async def list_messages(conversation_id: str) -> list[Message]:
             role=r["role"],
             content=r["content"],
             source=r["source"],
+            sources=r["sources"],
             created_at=r["created_at"],
         )
         for r in rows
