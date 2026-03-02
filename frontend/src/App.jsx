@@ -137,6 +137,10 @@ export default function App() {
         }])
         break
 
+      case 'messages_updated':
+        fetchMessages(msg.conversation_id)
+        break
+
       case 'audio_data':
         dispatchAudioData(msg.data)
         break
@@ -148,9 +152,9 @@ export default function App() {
       default:
         break
     }
-  }, [fetchConversations])
+  }, [fetchConversations, fetchMessages])
 
-  const { connected, sendMessage, sendAudio, sendAudioComplete, sendInterrupt, switchMode } =
+  const { connected, sendMessage, sendAudio, sendAudioComplete, sendInterrupt, switchMode, sendEditMessage, sendDeleteMessage } =
     useWebSocket(handleWsMessage)
 
   useEffect(() => {
@@ -215,6 +219,16 @@ export default function App() {
     switchMode('chat')
   }, [switchMode])
 
+  const handleEditMessage = useCallback((messageId, content) => {
+    if (!currentConversationId) return
+    sendEditMessage(messageId, content, currentConversationId)
+  }, [sendEditMessage, currentConversationId])
+
+  const handleDeleteMessage = useCallback((messageId) => {
+    if (!currentConversationId) return
+    sendDeleteMessage(messageId, currentConversationId)
+  }, [sendDeleteMessage, currentConversationId])
+
   const currentConversation = conversations.find(c => c.id === currentConversationId)
 
   if (view === 'voice') {
@@ -243,6 +257,9 @@ export default function App() {
         onSwitchToVoice={handleSwitchToVoice}
         conversationTitle={currentConversation?.title || 'New Chat'}
         connected={connected}
+        onEditMessage={handleEditMessage}
+        onDeleteMessage={handleDeleteMessage}
+        conversationId={currentConversationId}
       />
 
       {showConversations && (

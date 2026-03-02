@@ -84,12 +84,13 @@ async def send_json(ws: WebSocket, data: dict):
     await ws.send_text(json.dumps(data))
 
 
-async def handle_text_message(session: Session, content: str, conversation_id: str):
+async def handle_text_message(session: Session, content: str, conversation_id: str, skip_user_message: bool = False):
     """Full text message flow: store, get response, stream, store, optionally TTS."""
     source = "text" if session.mode == "text" else "voice"
 
     # Store user message
-    await db.create_message(conversation_id, "user", content, source)
+    if not skip_user_message:
+        await db.create_message(conversation_id, "user", content, source)
 
     # Build history
     messages = await db.list_messages(conversation_id)
@@ -229,6 +230,22 @@ async def websocket_endpoint(websocket: WebSocket):
 
                 elif msg_type == "interrupt":
                     await handle_interrupt(session)
+
+                elif msg_type == "edit_message":
+                    msg_id = data["message_id"]
+                    content = data["content"]
+                    conv_id = data["conversation_id"]
+                    await db.delete_messages_after(conv_id, msg_id)
+                    await db.update_message_content(msg_id, content)
+                    await send_json(websocket, {"type": "messages_updated", "conversation_id": conv_id})
+                    session.conversation_id = conv_id
+                    await handle_text_message(session, content, conv_id, skip_user_message=True)
+
+                elif msg_type == "delete_message":
+                    msg_id = data["message_id"]
+                    conv_id = data["conversation_id"]
+                    await db.delete_message(msg_id)
+                    await send_json(websocket, {"type": "messages_updated", "conversation_id": conv_id})
 
                 elif msg_type == "mode_switch":
                     session.mode = data.get("mode", "text")
