@@ -7,6 +7,7 @@ const styles = {
     display: 'flex',
     alignItems: 'flex-end',
     padding: '8px 12px',
+    paddingBottom: 'calc(8px + env(safe-area-inset-bottom, 8px))',
     gap: 8,
     borderTop: '1px solid var(--border)',
     background: 'var(--surface)',
