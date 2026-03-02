@@ -110,7 +110,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding-top: var(--safe-top);
-  padding-bottom: var(--safe-bottom);
+  /* padding-bottom handled by InputBar and VoiceView individually */
   padding-left: var(--safe-left);
   padding-right: var(--safe-right);
   transition: background 0.2s ease, color 0.2s ease;
