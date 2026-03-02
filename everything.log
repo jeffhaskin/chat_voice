@@ -1444,3 +1444,27 @@ RuntimeError: Unexpected ASGI message 'websocket.send', after sending 'websocket
 2026-03-01 18:51:07,350 [server.main] INFO: All services initialized
 2026-03-01 18:51:07,354 [server.main] INFO: WebSocket connected: f9095596-9acc-4311-98ef-50df0ec17841
 2026-03-01 18:51:07,365 [server.main] INFO: WebSocket connected: 9a2d4add-4716-4b69-a1a6-fbeb4e87c77e
+2026-03-01 18:51:41,883 [server.main] INFO: WebSocket connected: f777792d-095a-474f-9e32-0e4cc99859d4
+2026-03-01 18:51:42,831 [server.main] INFO: Mode switched to voice for session f777792d-095a-474f-9e32-0e4cc99859d4
+2026-03-01 18:51:49,752 [server.services.db] INFO: Created conversation 846db9e5-eae0-4059-8b44-f63c51fc5565
+2026-03-01 18:51:49,754 [server.services.stt] INFO: Transcribing 114688 bytes of audio...
+2026-03-01 18:51:51,958 [server.services.stt] INFO: Transcription result: Hey, what do you know about large language models?...
+2026-03-01 18:51:51,961 [server.services.db] INFO: Auto-titled conversation 846db9e5-eae0-4059-8b44-f63c51fc5565: Hey, what do you know about large language models?
+2026-03-01 18:51:51,961 [server.services.db] INFO: Created message 0f8e3051-394c-4842-9eb7-c0d247ea78c9 in conversation 846db9e5-eae0-4059-8b44-f63c51fc5565
+2026-03-01 18:51:51,962 [claude_agent_sdk._internal.transport.subprocess_cli] INFO: Using bundled Claude Code CLI: /Users/jeff/Programs/chat_voice/.venv/lib/python3.13/site-packages/claude_agent_sdk/_bundled/claude
+2026-03-01 18:51:57,555 [server.services.db] INFO: Created message 9aa7e9d3-3dcf-4c89-8770-4f8e42dd8041 in conversation 846db9e5-eae0-4059-8b44-f63c51fc5565
+2026-03-01 18:51:57,556 [server.services.db] INFO: Updated conversation 846db9e5-eae0-4059-8b44-f63c51fc5565
+2026-03-01 18:51:57,556 [server.services.tts] INFO: Generating speech (edge) for: Quite a bit, actually. What specifically are you curious about?...
+2026-03-01 18:51:58,673 [server.services.tts] INFO: Generated Edge TTS audio: 261504 bytes
+2026-03-01 18:51:58,682 [server.main] INFO: Sent 1 audio chunks to client
+2026-03-01 18:52:04,346 [server.main] INFO: Mode switched to chat for session f777792d-095a-474f-9e32-0e4cc99859d4
+2026-03-01 18:52:16,031 [server.services.db] INFO: Created message 2cf04b4d-3d6e-4455-9c8d-9bc4ae6bf1e0 in conversation 846db9e5-eae0-4059-8b44-f63c51fc5565
+2026-03-01 18:52:16,033 [claude_agent_sdk._internal.transport.subprocess_cli] INFO: Using bundled Claude Code CLI: /Users/jeff/Programs/chat_voice/.venv/lib/python3.13/site-packages/claude_agent_sdk/_bundled/claude
+2026-03-01 18:52:20,679 [server.services.search] INFO: Searching: Wikipedia Transformer neural network architecture
+2026-03-01 18:52:21,377 [httpx] INFO: HTTP Request: GET https://api.search.brave.com/res/v1/web/search?q=Wikipedia+Transformer+neural+network+architecture&count=5 "HTTP/1.1 200 OK"
+2026-03-01 18:52:21,379 [server.services.search] INFO: Search 'Wikipedia Transformer neural network architecture': 5 results
+2026-03-01 18:52:31,437 [server.services.db] INFO: Created message 95e9ff34-1985-49fb-a612-55e1c276b557 in conversation 846db9e5-eae0-4059-8b44-f63c51fc5565
+2026-03-01 18:52:31,438 [server.services.db] INFO: Updated conversation 846db9e5-eae0-4059-8b44-f63c51fc5565
+2026-03-01 18:52:56,884 [server.main] ERROR: WebSocket error for session f777792d-095a-474f-9e32-0e4cc99859d4: Cannot call "receive" once a disconnect message has been received.
+2026-03-01 18:53:05,683 [server.main] INFO: WebSocket connected: f28be288-8298-47cd-b81e-54154573fafa
+2026-03-01 18:53:37,368 [server.main] ERROR: WebSocket error for session f28be288-8298-47cd-b81e-54154573fafa: Cannot call "receive" once a disconnect message has been received.
