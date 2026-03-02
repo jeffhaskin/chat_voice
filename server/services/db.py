@@ -196,3 +196,39 @@ async def set_setting(key: str, value: str) -> None:
     )
     await db.commit()
     logger.info("Set setting %s", key)
+
+
+async def delete_messages_after(conversation_id: str, message_id: str) -> None:
+    """Delete all messages in a conversation created after the given message."""
+    conn = await _get_db()
+    cursor = await conn.execute(
+        "SELECT created_at FROM messages WHERE id = ?", (message_id,)
+    )
+    row = await cursor.fetchone()
+    if row is None:
+        return
+    await conn.execute(
+        "DELETE FROM messages WHERE conversation_id = ? AND created_at > ?",
+        (conversation_id, row["created_at"]),
+    )
+    await conn.commit()
+    logger.info("Deleted messages after %s in conversation %s", message_id, conversation_id)
+
+
+async def update_message_content(message_id: str, content: str) -> None:
+    """Update the content of a message."""
+    conn = await _get_db()
+    await conn.execute(
+        "UPDATE messages SET content = ? WHERE id = ?",
+        (content, message_id),
+    )
+    await conn.commit()
+    logger.info("Updated message content for %s", message_id)
+
+
+async def delete_message(message_id: str) -> None:
+    """Delete a single message."""
+    conn = await _get_db()
+    await conn.execute("DELETE FROM messages WHERE id = ?", (message_id,))
+    await conn.commit()
+    logger.info("Deleted message %s", message_id)

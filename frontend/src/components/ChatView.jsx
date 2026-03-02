@@ -65,6 +65,9 @@ export default function ChatView({
   onSwitchToVoice,
   conversationTitle,
   connected,
+  onEditMessage,
+  onDeleteMessage,
+  conversationId,
 }) {
   const [dark, setDark] = useState(() =>
     window.matchMedia('(prefers-color-scheme: dark)').matches
@@ -106,7 +109,7 @@ export default function ChatView({
         </button>
       </div>
       <div style={styles.messagesArea}>
-        <MessageList messages={messages} />
+        <MessageList messages={messages} onEditMessage={onEditMessage} onDeleteMessage={onDeleteMessage} conversationId={conversationId} />
       </div>
       <InputBar onSend={onSend} disabled={streaming} onVoiceToggle={onSwitchToVoice} />
     </div>

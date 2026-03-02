@@ -92,5 +92,26 @@ export default function useWebSocket(onMessage) {
     }
   }, [])
 
-  return { connected, sendMessage, sendAudio, sendAudioComplete, sendInterrupt, switchMode }
+  const sendEditMessage = useCallback((messageId, content, conversationId) => {
+    if (wsRef.current?.readyState === WebSocket.OPEN) {
+      wsRef.current.send(JSON.stringify({
+        type: 'edit_message',
+        message_id: messageId,
+        content,
+        conversation_id: conversationId,
+      }))
+    }
+  }, [])
+
+  const sendDeleteMessage = useCallback((messageId, conversationId) => {
+    if (wsRef.current?.readyState === WebSocket.OPEN) {
+      wsRef.current.send(JSON.stringify({
+        type: 'delete_message',
+        message_id: messageId,
+        conversation_id: conversationId,
+      }))
+    }
+  }, [])
+
+  return { connected, sendMessage, sendAudio, sendAudioComplete, sendInterrupt, switchMode, sendEditMessage, sendDeleteMessage }
 }
