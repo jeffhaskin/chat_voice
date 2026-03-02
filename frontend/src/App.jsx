@@ -148,6 +148,10 @@ export default function App() {
         dispatchAudioData(msg.data)
         break
 
+      case 'browser_tts':
+        window.dispatchEvent(new CustomEvent('voice-browser-tts', { detail: msg.text }))
+        break
+
       case 'audio_complete':
         window.dispatchEvent(new CustomEvent('voice-audio-complete'))
         break

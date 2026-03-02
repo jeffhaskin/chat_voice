@@ -201,6 +201,7 @@ export default function VoiceView({
         // Interrupt playback and start recording
         sendInterrupt()
         stopPlayback({ closeContext: true })
+        if (window.speechSynthesis) window.speechSynthesis.cancel()
         startRecording()
         break
     }
@@ -288,11 +289,35 @@ export default function VoiceView({
     return () => window.removeEventListener('voice-audio-complete', handler)
   }, [stopPlayback])
 
+  // Browser TTS via speechSynthesis
+  useEffect(() => {
+    const handler = (e) => {
+      const text = e.detail
+      if (!window.speechSynthesis || !text) return
+      window.speechSynthesis.cancel()
+      const utterance = new SpeechSynthesisUtterance(text)
+      utterance.onstart = () => setState('speaking')
+      utterance.onend = () => {
+        setState('idle')
+        setAmplitude(0)
+      }
+      utterance.onerror = () => {
+        setState('idle')
+        setAmplitude(0)
+      }
+      setState('speaking')
+      window.speechSynthesis.speak(utterance)
+    }
+    window.addEventListener('voice-browser-tts', handler)
+    return () => window.removeEventListener('voice-browser-tts', handler)
+  }, [])
+
   // Cleanup on unmount
   useEffect(() => {
     return () => {
       stopRecording()
       stopPlayback()
+      if (window.speechSynthesis) window.speechSynthesis.cancel()
       cancelAnimationFrame(animFrameRef.current)
     }
   }, [stopRecording, stopPlayback])

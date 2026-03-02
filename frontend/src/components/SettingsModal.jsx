@@ -200,6 +200,16 @@ export default function SettingsModal({ onClose }) {
               >
                 Edge TTS
               </button>
+              <button
+                style={{
+                  ...styles.toggleBtn,
+                  ...(ttsProvider === 'browser' ? styles.toggleBtnActive : {}),
+                }}
+                onClick={() => setTtsProvider('browser')}
+                disabled={loading}
+              >
+                Browser TTS
+              </button>
             </div>
           </div>
         </div>

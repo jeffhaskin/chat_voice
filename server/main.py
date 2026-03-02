@@ -146,6 +146,9 @@ async def speak_text(session: Session, text: str):
     """Generate TTS and stream audio chunks to client."""
     try:
         provider = await db.get_setting("tts_provider") or "kokoro"
+        if provider == "browser":
+            await send_json(session.websocket, {"type": "browser_tts", "text": text})
+            return
         chunk_count = 0
         async for chunk in tts.generate_speech_chunks(text, provider=provider):
             await session.websocket.send_bytes(chunk)
