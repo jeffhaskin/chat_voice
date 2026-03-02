@@ -1576,3 +1576,4 @@ RuntimeError: Unexpected ASGI message 'websocket.send', after sending 'websocket
 2026-03-01 19:04:55,817 [server.services.db] INFO: Deleted conversation 892170a1-0b5e-4b91-bb2c-d5f4f44e98e3 and its messages
 2026-03-01 19:04:56,574 [server.services.db] INFO: Deleted conversation 4be4c00c-1349-4ac7-ac9e-7fb3df8f47a5 and its messages
 2026-03-01 19:05:45,698 [server.main] ERROR: WebSocket error for session 1a2389a6-2bb9-49b6-9e90-510796bef4fe: Cannot call "receive" once a disconnect message has been received.
+2026-03-01 19:21:25,723 [server.main] ERROR: WebSocket error for session ce7ab5d5-cc15-4496-b3f9-9faed153ee4b: Cannot call "receive" once a disconnect message has been received.
