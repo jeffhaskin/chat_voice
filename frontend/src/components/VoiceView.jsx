@@ -270,16 +270,15 @@ export default function VoiceView({
     return () => window.removeEventListener('voice-audio-data', handler)
   }, [state, playAudioChunk])
 
-  // Transition from processing to idle when we get a response_complete
+  // Transition from speaking/processing to idle when server sends audio_complete
   useEffect(() => {
-    if (state === 'processing' && lastAssistant && !lastAssistant.streaming) {
-      // If we got a text response without audio, go back to idle
-      const timer = setTimeout(() => {
-        if (state === 'processing') setState('idle')
-      }, 1000)
-      return () => clearTimeout(timer)
+    const handler = () => {
+      stopPlayback()
+      setState('idle')
     }
-  }, [state, lastAssistant])
+    window.addEventListener('voice-audio-complete', handler)
+    return () => window.removeEventListener('voice-audio-complete', handler)
+  }, [stopPlayback])
 
   // Cleanup on unmount
   useEffect(() => {

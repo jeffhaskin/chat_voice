@@ -44,7 +44,7 @@ export default function App() {
   const handleWsMessage = useCallback((msg) => {
     switch (msg.type) {
       case 'conversation_created':
-        setCurrentConversationId(msg.conversation_id)
+        setCurrentConversationId(msg.conversation.id)
         fetchConversations()
         break
 
@@ -134,6 +134,10 @@ export default function App() {
 
       case 'audio_data':
         dispatchAudioData(msg.data)
+        break
+
+      case 'audio_complete':
+        window.dispatchEvent(new CustomEvent('voice-audio-complete'))
         break
 
       default:

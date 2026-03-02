@@ -558,3 +558,101 @@ RuntimeError: Unexpected ASGI message 'websocket.send', after sending 'websocket
 2026-03-01 17:02:53,200 [server.main] INFO: WebSocket connected: b29b8a91-d2f8-476b-8400-1255704c5116
 2026-03-01 17:03:41,210 [server.main] ERROR: WebSocket error for session 47bcee8c-d81c-411d-b1c3-a796e8afc518: Cannot call "receive" once a disconnect message has been received.
 2026-03-01 17:09:32,544 [server.main] ERROR: WebSocket error for session b29b8a91-d2f8-476b-8400-1255704c5116: Cannot call "receive" once a disconnect message has been received.
+2026-03-01 17:20:58,328 [server.main] INFO: Shutting down services...
+2026-03-01 17:20:58,329 [server.services.db] INFO: Database connection closed
+2026-03-01 17:20:58,330 [server.services.stt] INFO: STT cleaned up
+2026-03-01 17:20:58,331 [server.services.tts] INFO: TTS cleaned up
+2026-03-01 17:20:58,331 [server.services.llm] INFO: LLM service cleaned up
+2026-03-01 17:20:58,338 [server.services.search] INFO: Search service cleaned up
+2026-03-01 17:20:58,338 [server.main] INFO: All services cleaned up
+2026-03-01 17:21:26,283 [server.main] INFO: Starting server — initializing services...
+2026-03-01 17:21:26,283 [server.services.db] INFO: Opening database connection to chat_voice.db
+2026-03-01 17:21:26,284 [server.services.db] INFO: Database initialized at chat_voice.db
+2026-03-01 17:21:27,381 [httpx] INFO: HTTP Request: HEAD https://huggingface.co/mustafaaljadery/distil-whisper-mlx/resolve/main/mlx_models/distil-large-v3/weights.npz "HTTP/1.1 302 Found"
+2026-03-01 17:21:27,507 [httpx] INFO: HTTP Request: HEAD https://huggingface.co/mustafaaljadery/distil-whisper-mlx/resolve/main/mlx_models/distil-large-v3/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-01 17:21:27,529 [httpx] INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/mustafaaljadery/distil-whisper-mlx/8e16457a2a272e8344eefffdea7f7d6d81310761/mlx_models%2Fdistil-large-v3%2Fconfig.json "HTTP/1.1 200 OK"
+2026-03-01 17:21:27,533 [server.services.stt] INFO: STT initialized with model: distil-large-v3
+2026-03-01 17:21:27,663 [httpx] INFO: HTTP Request: GET https://huggingface.co/api/models/prince-canuma/Kokoro-82M/revision/main "HTTP/1.1 200 OK"
+2026-03-01 17:21:28,798 [server.services.tts] INFO: TTS initialized with Kokoro MLX
+2026-03-01 17:21:28,798 [server.services.llm] INFO: LLM service initialized (claude-agent-sdk)
+2026-03-01 17:21:28,802 [server.services.search] INFO: Search service initialized
+2026-03-01 17:21:28,802 [server.main] INFO: All services initialized
+2026-03-01 17:21:38,988 [server.main] INFO: WebSocket connected: 1ec0ff01-15be-454f-80aa-59d74e42f687
+2026-03-01 17:21:43,748 [server.services.db] INFO: Deleted conversation 50355e09-53fc-4367-9c9a-57819cabeef7 and its messages
+2026-03-01 17:21:49,422 [server.main] INFO: Mode switched to voice for session 1ec0ff01-15be-454f-80aa-59d74e42f687
+2026-03-01 17:21:59,346 [server.services.db] INFO: Created conversation 499547fc-75bc-4935-a919-89548c9fff75
+2026-03-01 17:21:59,349 [server.services.stt] INFO: Transcribing 114688 bytes of audio...
+2026-03-01 17:22:01,211 [server.services.stt] INFO: Transcription result: Hey, are you there? I have some questions....
+2026-03-01 17:22:01,213 [server.services.db] INFO: Auto-titled conversation 499547fc-75bc-4935-a919-89548c9fff75: Hey, are you there? I have some questions.
+2026-03-01 17:22:01,213 [server.services.db] INFO: Created message b8fbe2e2-5905-4f0d-bc80-f3c29375f042 in conversation 499547fc-75bc-4935-a919-89548c9fff75
+2026-03-01 17:22:01,214 [claude_agent_sdk._internal.transport.subprocess_cli] INFO: Using bundled Claude Code CLI: /Users/jeff/Programs/chat_voice/.venv/lib/python3.13/site-packages/claude_agent_sdk/_bundled/claude
+2026-03-01 17:22:06,263 [server.services.db] INFO: Created message 8203ef48-da00-4eee-a9b1-aeb764830e5b in conversation 499547fc-75bc-4935-a919-89548c9fff75
+2026-03-01 17:22:06,264 [server.services.db] INFO: Updated conversation 499547fc-75bc-4935-a919-89548c9fff75
+2026-03-01 17:22:06,265 [server.services.tts] INFO: Generating speech for: Hey! Yes, I'm here! 👋 What questions do you have? I'm happy to help with whatever you need....
+2026-03-01 17:22:07,515 [phonemizer] WARNING: words count mismatch on 100.0% of the lines (1/1)
+2026-03-01 17:22:08,278 [server.services.tts] INFO: Generated 1 audio chunks
+2026-03-01 17:24:21,796 [server.main] ERROR: WebSocket error for session 1ec0ff01-15be-454f-80aa-59d74e42f687: Cannot call "receive" once a disconnect message has been received.
+2026-03-01 17:24:31,870 [server.main] INFO: WebSocket connected: f89c9367-0d75-4d89-9e33-ca83dae1cf62
+2026-03-01 17:25:01,269 [server.main] ERROR: WebSocket error for session f89c9367-0d75-4d89-9e33-ca83dae1cf62: Cannot call "receive" once a disconnect message has been received.
+2026-03-01 17:25:03,378 [server.main] INFO: WebSocket connected: c1a2573e-c720-467c-8fab-07045b1a2eb3
+2026-03-01 17:25:50,186 [server.main] ERROR: WebSocket error for session c1a2573e-c720-467c-8fab-07045b1a2eb3: Cannot call "receive" once a disconnect message has been received.
+2026-03-01 17:28:18,890 [server.main] INFO: WebSocket connected: 180c4cb2-2831-4f46-aeb0-a73a75946f50
+2026-03-01 17:28:19,754 [server.main] ERROR: WebSocket error for session 180c4cb2-2831-4f46-aeb0-a73a75946f50: Cannot call "receive" once a disconnect message has been received.
+2026-03-01 17:28:39,200 [server.main] INFO: WebSocket connected: f5874e73-8621-4bbc-97d4-8892b6708153
+2026-03-01 17:28:39,679 [server.main] INFO: Mode switched to chat for session f5874e73-8621-4bbc-97d4-8892b6708153
+2026-03-01 17:28:43,103 [server.main] INFO: Mode switched to voice for session f5874e73-8621-4bbc-97d4-8892b6708153
+2026-03-01 17:28:51,792 [server.services.db] INFO: Created conversation 0de5cb3e-4b91-4e5f-8ba1-0a200e817e53
+2026-03-01 17:28:58,220 [server.main] ERROR: WebSocket error for session f5874e73-8621-4bbc-97d4-8892b6708153: Cannot call "receive" once a disconnect message has been received.
+2026-03-01 17:29:06,750 [server.main] INFO: WebSocket connected: daec0ac9-a5fc-4777-93c0-195d0413ccb8
+2026-03-01 17:29:09,133 [server.main] INFO: Mode switched to voice for session daec0ac9-a5fc-4777-93c0-195d0413ccb8
+2026-03-01 17:29:16,536 [server.services.db] INFO: Created conversation 3e897ceb-ae9e-4422-a27f-ccbd98245a5a
+2026-03-01 17:29:16,538 [server.services.stt] INFO: Transcribing 147456 bytes of audio...
+2026-03-01 17:29:17,896 [server.services.stt] INFO: Transcription result: Hey, what do you know about large language models?...
+2026-03-01 17:29:17,897 [server.services.db] INFO: Auto-titled conversation 3e897ceb-ae9e-4422-a27f-ccbd98245a5a: Hey, what do you know about large language models?
+2026-03-01 17:29:17,898 [server.services.db] INFO: Created message b07d49a8-0934-4549-a029-87aa86beaeee in conversation 3e897ceb-ae9e-4422-a27f-ccbd98245a5a
+2026-03-01 17:29:17,898 [claude_agent_sdk._internal.transport.subprocess_cli] INFO: Using bundled Claude Code CLI: /Users/jeff/Programs/chat_voice/.venv/lib/python3.13/site-packages/claude_agent_sdk/_bundled/claude
+2026-03-01 17:29:34,919 [server.services.db] INFO: Created message dfca7840-a072-4aa7-8266-3b10ac936690 in conversation 3e897ceb-ae9e-4422-a27f-ccbd98245a5a
+2026-03-01 17:29:34,920 [server.services.db] INFO: Updated conversation 3e897ceb-ae9e-4422-a27f-ccbd98245a5a
+2026-03-01 17:29:34,921 [server.services.tts] INFO: Generating speech for: Great question! Here's a broad overview of what I know about **Large Language Models (LLMs)**:
+
+---
+...
+2026-03-01 17:29:35,576 [phonemizer] WARNING: words count mismatch on 100.0% of the lines (1/1)
+2026-03-01 17:29:35,577 [phonemizer] WARNING: words count mismatch on 100.0% of the lines (1/1)
+2026-03-01 17:29:35,578 [phonemizer] WARNING: words count mismatch on 100.0% of the lines (1/1)
+2026-03-01 17:29:36,560 [phonemizer] WARNING: words count mismatch on 100.0% of the lines (1/1)
+2026-03-01 17:29:37,314 [phonemizer] WARNING: words count mismatch on 100.0% of the lines (1/1)
+2026-03-01 17:29:37,728 [phonemizer] WARNING: words count mismatch on 100.0% of the lines (1/1)
+2026-03-01 17:29:38,828 [phonemizer] WARNING: words count mismatch on 100.0% of the lines (1/1)
+2026-03-01 17:29:40,225 [phonemizer] WARNING: words count mismatch on 100.0% of the lines (1/1)
+2026-03-01 17:29:40,225 [phonemizer] WARNING: words count mismatch on 100.0% of the lines (1/1)
+2026-03-01 17:29:40,226 [phonemizer] WARNING: words count mismatch on 100.0% of the lines (1/1)
+2026-03-01 17:29:40,316 [phonemizer] WARNING: words count mismatch on 100.0% of the lines (1/1)
+2026-03-01 17:29:40,321 [phonemizer] WARNING: words count mismatch on 100.0% of the lines (1/1)
+2026-03-01 17:29:40,321 [phonemizer] WARNING: words count mismatch on 100.0% of the lines (1/1)
+2026-03-01 17:29:40,321 [phonemizer] WARNING: words count mismatch on 100.0% of the lines (1/1)
+2026-03-01 17:29:40,431 [phonemizer] WARNING: words count mismatch on 100.0% of the lines (1/1)
+2026-03-01 17:29:40,431 [phonemizer] WARNING: words count mismatch on 100.0% of the lines (1/1)
+2026-03-01 17:29:40,431 [phonemizer] WARNING: words count mismatch on 100.0% of the lines (1/1)
+2026-03-01 17:29:40,614 [phonemizer] WARNING: words count mismatch on 100.0% of the lines (1/1)
+2026-03-01 17:29:40,615 [phonemizer] WARNING: words count mismatch on 100.0% of the lines (1/1)
+2026-03-01 17:29:40,615 [phonemizer] WARNING: words count mismatch on 100.0% of the lines (1/1)
+2026-03-01 17:29:40,733 [phonemizer] WARNING: words count mismatch on 100.0% of the lines (1/1)
+2026-03-01 17:29:40,733 [phonemizer] WARNING: words count mismatch on 100.0% of the lines (1/1)
+2026-03-01 17:29:40,734 [phonemizer] WARNING: words count mismatch on 100.0% of the lines (1/1)
+2026-03-01 17:29:40,843 [phonemizer] WARNING: words count mismatch on 100.0% of the lines (1/1)
+2026-03-01 17:29:40,843 [phonemizer] WARNING: words count mismatch on 100.0% of the lines (1/1)
+2026-03-01 17:29:40,843 [phonemizer] WARNING: words count mismatch on 100.0% of the lines (1/1)
+2026-03-01 17:29:40,954 [phonemizer] WARNING: words count mismatch on 100.0% of the lines (1/1)
+2026-03-01 17:29:40,954 [phonemizer] WARNING: words count mismatch on 100.0% of the lines (1/1)
+2026-03-01 17:29:40,954 [phonemizer] WARNING: words count mismatch on 100.0% of the lines (1/1)
+2026-03-01 17:29:41,408 [phonemizer] WARNING: words count mismatch on 100.0% of the lines (1/1)
+2026-03-01 17:29:41,551 [phonemizer] WARNING: words count mismatch on 100.0% of the lines (1/1)
+2026-03-01 17:29:41,708 [phonemizer] WARNING: words count mismatch on 100.0% of the lines (1/1)
+2026-03-01 17:29:41,835 [phonemizer] WARNING: words count mismatch on 100.0% of the lines (1/1)
+2026-03-01 17:29:42,944 [phonemizer] WARNING: words count mismatch on 100.0% of the lines (1/1)
+2026-03-01 17:29:44,179 [phonemizer] WARNING: words count mismatch on 100.0% of the lines (1/1)
+2026-03-01 17:29:44,432 [phonemizer] WARNING: words count mismatch on 100.0% of the lines (1/1)
+2026-03-01 17:29:44,574 [phonemizer] WARNING: words count mismatch on 100.0% of the lines (1/1)
+2026-03-01 17:29:44,893 [server.services.tts] INFO: Generated 42 audio chunks
+2026-03-01 17:30:01,992 [server.main] INFO: Mode switched to chat for session daec0ac9-a5fc-4777-93c0-195d0413ccb8
